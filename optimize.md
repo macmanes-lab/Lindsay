@@ -44,7 +44,7 @@ Running ABySS
 
 
 	
-##Re-running genome bless with -notrim flag 
+##Re-running *genome* bless with -notrim flag 
 
 
 mkdir nontrimmed.genome.bless
@@ -53,7 +53,7 @@ DIR: /mnt/data3/lah/bless/nontrimmed.genome.bless
 
 1. nohup bless -read1 ../harm1.fq -read2 ../harm2.fq -prefix no.trimmed -kmerlength 25 -notrim -verify &
 
-##Re-running larva bless with -notrim flag 							
+##Re-running *larva* bless with -notrim flag 							
 #####NOTE: Bless needs fq files not fq.gz
 
 DIR: /mnt/data3/lah/bless/nontrimmed.larva.bless
@@ -62,37 +62,37 @@ DIR: /mnt/data3/lah/bless/nontrimmed.larva.bless
 2. gunzip harmonia_larva.R2.fastq.gz
 3. nohup bless -read1 harmonia_larva.R1.fastq -read2 harmonia_larva.R2.fastq -prefix no.trimmed.larva -kmerlength 25 -notrim -verify &
 
-## Re-running adult bless with -notrim flag 
+## Re-running *adult* bless with -notrim flag 
 DIR: /mnt/data3/lah/bless/nontrimmed.adult.bless
 
 1. gunzip harmonia_adult.R1.fastq.gz
 2. gunzip harmonia_adult.R2.fastq.gz
 3. nohup bless -read1 harmonia_adult.R1.fastq -read2 harmonia_adult.R2.fastq -prefix no.trimmed.adult -kmerlength 25 -notrim -verify &
 
-##Running Trinity with bless-notrim, but no khmer adult 
+##Running *adult* Trinity with bless-notrim, but no khmer 
 DIR: /mnt/data3/lah/bless/nontrimmed.adult.bless/trinity.with.no.norm
 
 1. nohup Trinity --seqType fq --JM 50G --trimmomatic --left ../no.trimmed.adult.1.corrected.fastq --right ../no.trimmed.adult.2.corrected.fastq --CPU 8 --output adult.notrim.bless.nonorm.trinity.fasta --quality_trimming_params "ILLUMINACLIP:/opt/trinity/trinity-plugins/Trimmomatic-0.30/adapters/TruSeq3-PE.fa:2:40:15 LEADING:2 TRAILING:2 MINLEN:25" &
 							
-## Re-running adult khmer with bless -notrim data 
+## Re-running *adult* khmer with bless -notrim data 
 DIR: /mnt/data3/lah/bless/nontrimmed.adult.bless/khmer
 
 1. nohup interleave-reads.py -o nontrimmed.adult.interleaved.txn.fq ../no.trimmed.adult.1.corrected.fastq ../no.trimmed.adult.2.corrected.fastq &
 2. nohup normalize-by-median.py -p -x 15e8 -k 25 -C 50 --out nontrimmed.bless.adult.fq nontrimmed.adult.interleaved.txn.fq &
 
-##Running Trinity with bless-notrim, but no khmer larva 
+##Running *larva* Trinity with bless-notrim, but no khmer 
 DIR: /mnt/data3/lah/bless/nontrimmed.larva.bless
 
 1. nohup Trinity --seqType fq --JM 50G --trimmomatic --left no.trimmed.larva.1.corrected.fastq --right no.trimmed.larva.2.corrected.fastq --CPU 8 --output 	 larva.notrim.bless.nonorm.trinity.fasta --quality_trimming_params "ILLUMINACLIP:/opt/trinity/trinity-plugins/Trimmomatic-0.30/adapters/TruSeq3-PE.fa:2:40:15 LEADING:2 TRAILING:2 MINLEN:25" &
 
-##Re-running larva khmer with bless --notrim data
+##Re-running *larva* khmer with bless --notrim data
 DIR: /mnt/data3/lah/bless/nontrimmed.larva.bless/khmer
 
 1. nohup interleave-reads.py -o nontrimmed.larva.interleaved.txn.fq ../no.trimmed.larva.1.corrected.fastq ../no.trimmed.larva.2.corrected.fastq &	
 2. nohup normalize-by-median.py -p -x 15e8 -k 25 -C 50 --out nontrimmed.bless.larva.fq nontrimmed.larva.interleaved.txn.fq &
 
 
-## Running Transdecoder on trinity output of bless -notrim no norm transcriptomes## #DONE#
+## Running Transdecoder on trinity output of bless -notrim no norm transcriptomes##
 	Transdecoder finds coding regions within transcripts (used notrim trinity outputs)
 DIR:/mnt/data3/lah/transdecoder
 
@@ -131,7 +131,7 @@ DIR:/mnt/data3/lah/transdecoder
 	
 		6200
 		
-##Running bwa to map raw reads to adult Transdecoder output##
+##Running bwa to map raw reads to *adult* Transdecoder output##
 	Used Bwa to test how many reads mapped back
 DIR: /mnt/data3/lah/bwa
 
@@ -149,7 +149,7 @@ DIR: /mnt/data3/lah/bwa
 	
 	nohup express --rf-stranded -o adult.transcoder.express -p 10 \ /mnt/data3/lah/transdecoder/adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.cds \ adult.trandecoder.bam &
 	
-## Running bwa to map raw reads to larva transdecoder output ####
+## Running bwa to map raw reads to *larva* transdecoder output ####
 1. **Use bwa index made in last step**
 2. **run bwa with larva raw reads**
 	
