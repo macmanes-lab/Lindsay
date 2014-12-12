@@ -158,6 +158,6 @@ DIR: /mnt/data3/lah/bwa
 	
 	nohup express --rf-stranded -o larva.transcoder.express -p 10 \ /mnt/data3/lah/transdecoder/adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.cds \ larva.trandecoder.bam &
 
-4. **Grab rows with tmp > 1 **
+4. **Grab rows with tmp > 1**
 
 	awk '1>$15{next}1' results.xprs > larva_greater_than_1.txt
