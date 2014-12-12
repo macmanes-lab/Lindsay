@@ -1,0 +1,80 @@
+##Starting Trimmed bless and ABySS with trimmed transcriptome but no normalization with khmer ### #DONE#
+																	Running on threads of 20 
+	
+# Moving everything to new folder (/mnt/data3/lah/abyss/trimmed.bless.error.corrected/):
+
+cp /mnt/data3/lah/abyss/adult.trinity.fasta trimmed.bless.error.corrected/
+cp /mnt/data3/lah/abyss/larva.trinity.fasta trimmed.bless.error.corrected/
+cp /mnt/data3/lah/bless/v0p17/harm.corrected.1.corrected.fastq /mnt/data3/lah/abyss/trimmed.bless.error.corrected/
+cp /mnt/data3/lah/bless/v0p17/harm.corrected.2.corrected.fastq /mnt/data3/lah/abyss/trimmed.bless.error.corrected/
+
+# Have to interleave trimmed bless output files so I can split them:
+
+	nohup interleave-reads.py harm.corrected.1.corrected.fastq harm.corrected.2.corrected.fastq -o trimmed.bless.no.norm.interleaved.fq &
+	
+# Have to break corrected.fastq files into 20 so mpi is working to the best of it's ability:
+
+	General code: split --lines=24000000 --additional-suffix .fastq normalized.fq
+			  To split into 24 files I used 16800000 
+				24000000 = 27
+				30000000 = 22
+				38000000 = 17
+				36000000 = 18
+# Run cd-hit on the trimmed, bless, khmer normalized transcriptomes
+cd-hit-est -M 5000 -T 23 -c .97 -i adult.larva.fasta -o adult.larva.cdhit.fasta
+# Running ABySS
+mkdir abyss.no.norm.sh
+for k in 91 101 111 121; do
+     mkdir k$k;
+     abyss-pe -C k$k np=18 k=$k name=k$k n=5 long=adult.larva.cdhit.fasta\
+     in='../x*.fastq';
+done
+		
+THESE RESULTS WERE BETTER THEN THE TRIMMED DATA WITH NORMALIZATION BY AN N50 OF ABOUT 1000
+	
+								## Re-running genome bless with -notrim flag ## #IP#
+
+
+mkdir nontrimmed.genome.bless
+
+pwd : /mnt/data3/lah/bless/nontrimmed.genome.bless
+
+USAGE: bless <ARGUMENTS>
+
+ARGUMENT               DESCRIPTION                           MANDATORY   DEFAULT
+--------------------------------------------------------------------------------
+-read    <file name>   input file (single-end reads)         Y                  
+-read1   <file name>   1st input file (paired-end reads)     Y                  
+-read2   <file name>   2nd input file (paired-end reads)     Y                  
+-load    <file name>   load the dumped bloom filter data     N                  
+-prefix     <prefix>   outfile prefix                        Y                  
+-kmerlength <number>   k-mer length                          Y                  
+-fpr        <number>   target false positive probability     N           0.001
+-seed       <number>   random number seed                    N           0
+-cluster    <number>   number of clusters                    N           100
+-count      <number>   k-mer occurrence threshold            N           AUTO
+-extend     <number>   read extension amount                 N           5
+-nowrite               no output read                        N                  
+-notrim                turn trimming off                     N                  
+-verify                do false positive removal             N                  
+--------------------------------------------------------------------------------
+
+EXAMPLE (paired-end): bless -read1 in1.fastq -read2 in2.fastq -prefix directory/prefix -kmerlength 31
+EXAMPLE (single-end): bless -read in.fastq -prefix directory/prefix -kmerlength 31
+
+COMMAND:   nohup bless -read1 ../harm1.fq -read2 ../harm2.fq -prefix no.trimmed -kmerlength 25 -notrim -verify &
+
+							## Re-running larva bless with -notrim flag ## #IP#
+							
+***Bless needs fq files not fq.gz ***
+WD: /mnt/data3/lah/bless/nontrimmed.larva.bless
+gunzip harmonia_larva.R1.fastq.gz
+gunzip harmonia_larva.R2.fastq.gz
+nohup bless -read1 harmonia_larva.R1.fastq -read2 harmonia_larva.R2.fastq -prefix no.trimmed.larva -kmerlength 25 -notrim -verify &
+
+							## Re-running adult bless with -notrim flag ## #DONE#
+WD: /mnt/data3/lah/bless/nontrimmed.adult.bless
+gunzip harmonia_adult.R1.fastq.gz
+gunzip harmonia_adult.R2.fastq.gz
+nohup bless -read1 harmonia_adult.R1.fastq -read2 harmonia_adult.R2.fastq -prefix no.trimmed.adult -kmerlength 25 -notrim -verify &
+
