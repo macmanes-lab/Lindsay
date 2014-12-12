@@ -80,6 +80,8 @@ DIR: /mnt/data3/lah/bless/nontrimmed.adult.bless/khmer
 1. nohup interleave-reads.py -o nontrimmed.adult.interleaved.txn.fq ../no.trimmed.adult.1.corrected.fastq ../no.trimmed.adult.2.corrected.fastq &
 2. nohup normalize-by-median.py -p -x 15e8 -k 25 -C 50 --out nontrimmed.bless.adult.fq nontrimmed.adult.interleaved.txn.fq &
 
+		kept 22333810 of 116001642 or 19%
+		
 ##Running *larva* Trinity with bless-notrim, but no khmer 
 DIR: /mnt/data3/lah/bless/nontrimmed.larva.bless
 
@@ -90,6 +92,8 @@ DIR: /mnt/data3/lah/bless/nontrimmed.larva.bless/khmer
 
 1. nohup interleave-reads.py -o nontrimmed.larva.interleaved.txn.fq ../no.trimmed.larva.1.corrected.fastq ../no.trimmed.larva.2.corrected.fastq &	
 2. nohup normalize-by-median.py -p -x 15e8 -k 25 -C 50 --out nontrimmed.bless.larva.fq nontrimmed.larva.interleaved.txn.fq &
+		
+		kept 18509780 of 134977416 or 13%
 
 
 ## Running Transdecoder on trinity output of bless -notrim no norm transcriptomes##
