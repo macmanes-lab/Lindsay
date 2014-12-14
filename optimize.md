@@ -115,7 +115,8 @@ DIR:/mnt/data3/lah/transdecoder
 
 	abyss-fac adult.larva.notrim.bless.nonorm.trinity.fasta
 	
-		OUTPUT:n=200593	n50=1082
+		**1st attempt with broken butterfly** OUTPUT:n=200593 n50=1082
+		GOOD OUPUT: n=150862 n50=2281
 7. **Run Transdecoder**
 
 	nohup TransDecoder -S --CPU 20 -t adult.larva.notrim.bless.nonorm.trinity.fasta &
@@ -123,17 +124,20 @@ DIR:/mnt/data3/lah/transdecoder
 
 	abyss-fac adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.pep 
 	
-		OUTPUT: n=35410 N50=749
+		**1st attempt with broken butterfly** OUTPUT: n=35410 N50=749
+			OUTPUT: n=24871 N50=625
 
 	abyss-fac adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.cds
 	 
-		OUTPUT: n=3415 N50=951
-	
+		**1st attempt with broken butterfly** OUTPUT: n=3415 N50=951
+			OUTPUT: n=24878 N50=1674
+			
 9. **Find number of complete transcripts**
 
 	grep -c complete adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.pep 
 	
-		6200
+		**1st attempt with broken butterfly** 6200
+		**2nd attempt with correct butterfly = 14324
 		
 ##Running bwa to map raw reads to *adult* Transdecoder output##
 	Used Bwa to test how many reads mapped back
@@ -143,13 +147,13 @@ DIR: /mnt/data3/lah/bwa
 
 2. **make a bwa index of cds from transdecoder**
  
-	nohup bwa index -p transdecoder \ /mnt/data3/lah/transdecoder/adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.cds & 
+	nohup bwa index -p transdecoder /mnt/data3/lah/transdecoder/adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.cds & 
 3. **run bwa with adult raw reads**
 	
-	nohup bwa mem -t 20 transdecoder harmonia_adult.R1.fastq harmonia_adult.R2.fastq | samtools view -@6 \ -Sub - > adult.trandecoder.bam &	
+	bwa mem -t 20 transdecoder harmonia_adult.R1.fastq harmonia_adult.R2.fastq | samtools view -@6 -Sub - > adult.trandecoder.bam 	
 4. **Run express on transdecoder output.cds** 
 
-	express is run to quantify the abundances of a set of target sequences from subsequences
+		express is run to quantify the abundances of a set of target sequences from subsequences
 	
 	nohup express --rf-stranded -o adult.transcoder.express -p 10 \ /mnt/data3/lah/transdecoder/adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.cds \ adult.trandecoder.bam &
 	
@@ -157,7 +161,7 @@ DIR: /mnt/data3/lah/bwa
 1. **Use bwa index made in last step**
 2. **run bwa with larva raw reads**
 	
-	 bwa mem -t 20 transdecoder harmonia_larva.R1.fastq harmonia_larva.R2.fastq | samtools view -@6 -Sub - \ > larva.trandecoder.bam
+	 bwa mem -t 20 transdecoder harmonia_larva.R1.fastq harmonia_larva.R2.fastq | samtools view -@6 -Sub - > larva.trandecoder.bam
 3. **Run express of transdecoder output.cds**
 	
 	nohup express --rf-stranded -o larva.transcoder.express -p 10 \ /mnt/data3/lah/transdecoder/adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.cds \ larva.trandecoder.bam &
