@@ -157,6 +157,19 @@ DIR: /mnt/data3/lah/bwa
 	
 	nohup express --rf-stranded -o adult.transcoder.express -p 10 \ /mnt/data3/lah/transdecoder/adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.cds \ adult.trandecoder.bam &
 	
+5. **Grab rows from express output with tmp >1**
+
+	awk '1>$15{next}1' results.xprs > adult_greater_than_1.txt
+
+6. **Count number with tmp >1**
+	
+	WD: /mnt/data3/lah/bwa/adult.transcoder.express
+	
+	wc -l adult_greater_than_1.txt
+		
+		16874
+	
+
 ## Running bwa to map raw reads to *larva* transdecoder output ####
 1. **Use bwa index made in last step**
 2. **run bwa with larva raw reads**
@@ -169,3 +182,13 @@ DIR: /mnt/data3/lah/bwa
 4. **Grab rows from express output with tmp > 1**
 
 	awk '1>$15{next}1' results.xprs > larva_greater_than_1.txt
+	
+5. **Count number with tmp >1**
+
+	WD: /mnt/data3/lah/bwa/larva.transcoder.express
+	
+	wc -l larva_greater_than_1.txt
+		
+		14255
+	
+	
