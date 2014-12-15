@@ -23,4 +23,43 @@
 		
 ##Running TransDecoder with files 
 
+**TransDecoder on bless with khmer Trinity fasta**
+
 1. nohup TransDecoder -S --CPU 20 -t bless_norm_Trinity.fasta &
+2. mkdir bless.norm.transdecoder
+3. mv bless_norm_Trinity.* bless.norm.transdecoder/
+4. cd bless.norm.transdecoder
+5. grep -c "complete" bless_norm_Trinity.fasta.transdecoder.pep
+		
+		14546
+
+**TransDecoder on bless with no khmer Trinity fasta**
+
+1. nohup TransDecoder -S --CPU 20 -t no.norm.bless.trinity.fasta &
+2.  mkdir bless.no.norm.transdecoder
+3.  mv no.norm.bless.trinity.* bless.no.norm.transdecoder/
+4.  cd bless.no.norm.transdecoder
+5.  grep -c "complete" no.norm.bless.trinity.fasta.transdecoder.pep
+
+		14502
+
+**TransDecoder on SGA with khmer Trinity fasta**
+
+1. nohup TransDecoder -S --CPU 20 -t p_eremicus_sga_with_norm_trinity.fasta &
+2. mkdir sga.norm.transdecoder
+3. mv p_eremicus_sga_with_norm_trinity.* sga.norm.transdecoder/
+4. cd sga.norm.transdecoder
+5. grep -c "complete" p_eremicus_sga_with_norm_trinity.fasta.transdecoder.pep
+
+		11249
+
+
+**TransDecoder on SGA with no khmer Trinity fasta**
+
+1. nohup TransDecoder -S --CPU 20 -t p_eremicus_sga_no_norm_trinity.fasta &
+2. mkdir sga.no.norm.transdecoder
+3. mv p_eremicus_sga_no_norm_trinity.* sga.no.norm.transdecoder/
+4. cd sga.no.norm.transdecoder
+5. grep -c "complete" p_eremicus_sga_no_norm_trinity.fasta.transdecoder.pep
+
+		11394

@@ -120,6 +120,8 @@ DIR:/mnt/data3/lah/transdecoder
 7. **Run Transdecoder**
 
 	nohup TransDecoder -S --CPU 20 -t adult.larva.notrim.bless.nonorm.trinity.fasta &
+	
+		S = strand-specific
 8. **Evaluate TransDecoder output**
 
 	abyss-fac adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.pep 
