@@ -190,5 +190,16 @@ DIR: /mnt/data3/lah/bwa
 	wc -l larva_greater_than_1.txt
 		
 		14255
+
+##Re-running khmer on bless -trim data
+
+		Doing this because the N50 was a lot lower when khmer was added -- maybe something was wrong with khmer?
+		
+WD: /mnt/data3/lah/bless/trimmed.genome.bless/khmer
+
+1. nohup interleave-reads.py -o trimmed.genome.interleaved.fq ../harm.corrected.1.corrected.fastq ../harm.corrected.2.corrected.fastq &
+2. nohup normalize-by-median.py -p -x 15e8 -k 25 -C 50 --out nontrimmed.bless.gemone.fq trimmed.genome.interleaved.fq &
+
 	
+
 	
