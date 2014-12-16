@@ -30,7 +30,7 @@ Run cd-hit on the trimmed, bless, khmer normalized transcriptomes
 
 Running ABySS
 
-8. mkdir abyss.no.norm.sh
+8. nano abyss.no.norm.sh
 
 
 	
@@ -81,6 +81,8 @@ DIR: /mnt/data3/lah/bless/nontrimmed.adult.bless/khmer
 2. nohup normalize-by-median.py -p -x 15e8 -k 25 -C 50 --out nontrimmed.bless.adult.fq nontrimmed.adult.interleaved.txn.fq &
 
 		kept 22333810 of 116001642 or 19%
+
+
 		
 ##Running *larva* Trinity with bless-notrim, but no khmer 
 DIR: /mnt/data3/lah/bless/nontrimmed.larva.bless
@@ -98,13 +100,13 @@ DIR: /mnt/data3/lah/bless/nontrimmed.larva.bless/khmer
 
 ## Running Transdecoder on trinity output of bless -notrim no norm transcriptomes##
 	Transdecoder finds coding regions within transcripts (used notrim trinity outputs)
-DIR:/mnt/data3/lah/transdecoder
+DIR:/mnt/data3/lah/transdecoder/notrim.nonorm.transdecoder
 
-1. mkdir transdecoder
-2. **FROM** /mnt/data3/lah/bless/nontrimmed.adult.bless/trinity.with.no.norm/adult.notrim.bless.nonorm.trinity.fasta$ **TO** /mnt/data3/lah/transdecoder 
-	cp adult.notrim.bless.nonorm.trinity.fasta /mnt/data3/lah/transdecoder/		
-3. **FROM** /mnt/data3/lah/bless/nontrimmed.larva.bless/larva.notrim.bless.nonorm.trinity.fasta$ **TO** /mnt/data3/lah/transdecoder
-	cp larva.notrim.bless.nonorm.trinity.fasta /mnt/data3/lah/transdecoder/
+1. mkdir transdecoder/notrim.nonorm.transdecoder
+2. **FROM** /mnt/data3/lah/bless/nontrimmed.adult.bless/trinity.with.no.norm/adult.notrim.bless.nonorm.trinity.fasta$ **TO** /mnt/data3/lah/transdecoder/notrim.nonorm.transdecoder
+	cp adult.notrim.bless.nonorm.trinity.fasta /mnt/data3/lah/transdecoder/notrim.nonorm.transdecoder		
+3. **FROM** /mnt/data3/lah/bless/nontrimmed.larva.bless/larva.notrim.bless.nonorm.trinity.fasta$ **TO** /mnt/data3/lah/transdecoder/notrim.nonorm.transdecoder
+	cp larva.notrim.bless.nonorm.trinity.fasta /mnt/data3/lah/transdecoder/notrim.nonorm.transdecoder
 4. **Cat adult and larva trinity outputs**
  
 	nohup cat adult.notrim.bless.nonorm.trinity.fasta larva.notrim.bless.nonorm.trinity.fasta &
@@ -193,6 +195,7 @@ DIR: /mnt/data3/lah/bwa
 		
 		14255
 
+
 ##Re-running khmer on bless -trim data
 
 		Doing this because the N50 was a lot lower when khmer was added -- maybe something was wrong with khmer?
@@ -201,6 +204,34 @@ WD: /mnt/data3/lah/bless/trimmed.genome.bless/khmer
 
 1. nohup interleave-reads.py -o trimmed.genome.interleaved.fq ../harm.corrected.1.corrected.fastq ../harm.corrected.2.corrected.fastq &
 2. nohup normalize-by-median.py -p -x 15e8 -k 25 -C 50 --out nontrimmed.bless.gemone.fq trimmed.genome.interleaved.fq &
+
+##Re-running abyss with khmer norm bless -trim data
+
+		The transdecoder transcriptome doesn't have khmer normalization, but this should be fine
+		
+WD: /mnt/data3/lah/abyss/trimmed.norm.bless.error.corrected
+
+1. **Copying everything to working directory**
+
+	*khmer ouput* cp trimmed.genome.interleaved.fq /mnt/data3/lah/abyss/trimmed.norm.bless.error.corrected/
+	
+	*transdecoder* cp adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.mRNA /mnt/data3/lah/abyss/trimmed.norm.bless.error.corrected/
+
+2. **Splitting khmer files**
+	split --lines=30000000 --additional-suffix .fastq trimmed.genome.interleaved.fq
+		
+		Splits into 22 files
+
+3. **Run ABySS**
+	nano abyss.sh
+	
+		for k in 91 101 111 121; do
+     			mkdir k$k;
+     			abyss-pe -C k$k np=18 k=$k name=k$k n=5 \ long=adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.mRNA \
+    	 		in='../x*.fastq';
+    	 		done
+	
+
 
 	
 
