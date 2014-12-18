@@ -196,14 +196,14 @@ DIR: /mnt/data3/lah/bwa
 		14255
 
 
-##Re-running khmer on bless -trim data
+##Re-running khmer on bless -trim *genome* data
 
 		Doing this because the N50 was a lot lower when khmer was added -- maybe something was wrong with khmer?
 		
 WD: /mnt/data3/lah/bless/trimmed.genome.bless/khmer
 
 1. nohup interleave-reads.py -o trimmed.genome.interleaved.fq ../harm.corrected.1.corrected.fastq ../harm.corrected.2.corrected.fastq &
-2. nohup normalize-by-median.py -p -x 15e8 -k 25 -C 50 --out nontrimmed.bless.gemone.fq trimmed.genome.interleaved.fq &
+2. nohup normalize-by-median.py -p -x 15e8 -k 25 -C 50 --out trimmed.bless.gemone.fq trimmed.genome.interleaved.fq &
 
 ##Re-running abyss with khmer norm bless -trim data
 
@@ -218,11 +218,13 @@ WD: /mnt/data3/lah/abyss/trimmed.norm.bless.error.corrected
 	*transdecoder* cp adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.mRNA /mnt/data3/lah/abyss/trimmed.norm.bless.error.corrected/
 
 2. **Splitting khmer files**
+
 	split --lines=30000000 --additional-suffix .fastq trimmed.genome.interleaved.fq
 		
 		Splits into 22 files
 
 3. **Run ABySS**
+
 	nano abyss.sh
 	
 		for k in 91 101 111 121; do
@@ -230,9 +232,56 @@ WD: /mnt/data3/lah/abyss/trimmed.norm.bless.error.corrected
      			abyss-pe -C k$k np=18 k=$k name=k$k n=5 \ long=adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.mRNA \
     	 		in='../x*.fastq';
     	 		done
+4. **Analyze results**
+
+	*91* - did not work?? 
 	
+		**re-run**
+		
+			for k in 93; do
+                        mkdir k$k;
+                        abyss-pe -C k$k np=18 k=$k name=k$k n=5 \ long=adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.mRNA \
+                        in='../x*.fastq';
+                        done
+                        
+          N50=4330
+          
+	*101* - abyss-fac k101-scaffolds.fa
+	
+		N50=4594 
+	*111* - abyss-fac k111-scaffolds.fa 
+	
+		N50=4631
+	*121* - abyss-fac k121-scaffolds.fa
+	
+		N50=4109
 
 
 	
+##Running khmer on bless -notrim *genome* data
+WD: /mnt/data3/lah/bless/nontrimmed.genome.bless/khmer
 
-	
+1. nohup interleave-reads.py -o nontrimmed.genome.interleaved.fq ../no.trimmed.genome.1.corrected.fastq ../no.trimmed.genome.2.corrected.fastq &
+2. nohup normalize-by-median.py -p -x 15e8 -k 25 -C 50 --out nontrimmed.bless.gemone.fq nontrimmed.genome.interleaved.fq &
+
+##Running abyss with khmer normalized bless -nontrimmed data
+
+WD: /mnt/data3/lah/abyss/nontrimmed.bless.norm.error.corrected
+
+1. *khmer output* cp nontrimmed.bless.gemone.fq /mnt/data3/lah/abyss/nontrimmed.bless.norm.error.corrected/
+2. *transdecoder output* cp adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.mRNA /mnt/data3/lah/abyss/nontrimmed.bless.norm.error.corrected/ 
+3. split --lines=24000000 --additional-suffix .fastq nontrimmed.bless.gemone.fq
+		
+		21 files
+4. nano abyss.sh
+
+	for k in 93 101 111 121; do
+     			mkdir k$k;
+     			abyss-pe -C k$k np=18 k=$k name=k$k n=5 \ long=adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.mRNA \
+    	 		in='../x*.fastq';
+    	 		done
+
+5. chmod +x abyss.sh
+5. **Run abyss** nohup ./abyss.sh &
+
+		
