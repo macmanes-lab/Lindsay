@@ -283,5 +283,33 @@ WD: /mnt/data3/lah/abyss/nontrimmed.bless.norm.error.corrected
 
 5. chmod +x abyss.sh
 5. **Run abyss** nohup ./abyss.sh &
+6. Check N50 using abyss-fac
+	
+	abyss-fac k101-scaffolds.fa
+		
+			4048
+	
+	abyss-fac k111-scaffolds.fa
+	
+			3981
+			
+	abyss-fac k121-scaffolds.fa
+	
+			3531
+			
+	***These seems really really low.***
+
+7. Rerunning abyss with lower kmer values
+8. nano abyss.low.sh
+
+	for k in 51 61 71 81 91; do
+     			mkdir k$k;
+     			abyss-pe -C k$k np=18 k=$k name=k$k n=5 \ long=adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.mRNA \
+    	 		in='../x*.fastq';
+    	 		done
+    	 		
+9. chmod +x abyss.low.sh
+10. nohup ./abyss.low.sh &
+
 
 		
