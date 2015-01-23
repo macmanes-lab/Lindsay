@@ -336,7 +336,7 @@ WD: /mnt/data3/lah/abyss/nontrimmed.bless.norm.error.corrected
 			
 			
 							
-##Not sure why these n50s are so low, rerunning abyss with nothing except for trimming 
+##Not sure why these n50s are so low, rerunning abyss on raw data
 WD: /mnt/data3/lah/abyss/no.ec.no.norm.no.txn
 
 1. mkdir no.ec.no.norm.no.txn
@@ -368,7 +368,7 @@ WD: /mnt/data3/lah/abyss/no.ec.no.norm.no.txn
 8. nohup ./abyss.sh &
 
 
-##Run ABySS on error corrected non-trimmed genome with no khmer or transcriptome added
+##Run ABySS on error corrected non-trimmed genome with no khmer
 
 WD: /mnt/data3/lah/abyss/nontrimmed.bless.no.norm.no.txn
 
