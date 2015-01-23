@@ -81,6 +81,8 @@ DIR: /mnt/data3/lah/bless/nontrimmed.adult.bless/khmer
 2. nohup normalize-by-median.py -p -x 15e8 -k 25 -C 50 --out nontrimmed.bless.adult.fq nontrimmed.adult.interleaved.txn.fq &
 
 		kept 22333810 of 116001642 or 19%
+		
+		
 
 
 		
@@ -302,14 +304,77 @@ WD: /mnt/data3/lah/abyss/nontrimmed.bless.norm.error.corrected
 7. Rerunning abyss with lower kmer values
 8. nano abyss.low.sh
 
-	for k in 51 61 71 81 91; do
+		for k in 51 61 71 81 91; do
      			mkdir k$k;
      			abyss-pe -C k$k np=18 k=$k name=k$k n=5 \ long=adult.larva.notrim.bless.nonorm.trinity.fasta.transdecoder.mRNA \
     	 		in='../x*.fastq';
     	 		done
-    	 		
+      			 		
 9. chmod +x abyss.low.sh
 10. nohup ./abyss.low.sh &
+	  	 		
+    
+    abyss-fac k51-scaffolds.fa
+    
+    		2586
+	abyss-fac k61-scaffolds.fa
+			
+			2988
+			
+	abyss-fac k71-scaffolds.fa
+	
+			3314
+			
+	abyss-fac k81-scaffolds.fa
+	
+			3590
+			
+	abyss-fac k91-scaffolds.fa
+	
+			3873
+			
+			
+			
+							
+##Not sure why these n50s are so low, rerunning abyss with nothing except for trimming 
+WD: /mnt/data3/lah/abyss/no.ec.no.norm.no.txn
 
+1. mkdir no.ec.no.norm.no.txn
+2. cd no.ec.no.norm.no.txn
+3. **Interleave Reads**
 
+	nohup interleave-reads.py -o interleaved.genome.fq /mnt/data3/lah/fastq_files_h.axyridis/harm1.fq /mnt/data3/lah/fastq_files_h.axyridis/harm2.fq &
+4. 	**Split files**
+
+	split --lines=30000000 --additional-suffix .fastq interleaved.genome.fq	
+	
+5. **count files**	
+ 	
+	ls -l | wc -l
+	
+		22 files
 		
+6. **make .sh file**
+
+	nano abyss.sh
+	
+		for k in 93 101 111 121; do
+     			mkdir k$k;
+     			abyss-pe -C k$k np=18 k=$k name=k$k n=5 in='../x*.fastq';
+    	 		done
+    	 		
+    	*not sure why, but when the "in=" line wasn't on same line as abyss-pe, it didn't work 		
+7. chmod +x abyss.sh
+8. nohup ./abyss.sh &
+
+
+##Run ABySS on error corrected non-trimmed genome with no khmer or transcriptome added
+
+WD: /mnt/data3/lah/abyss/nontrimmed.bless.no.norm.no.txn
+
+**already had non-trimmed bless genome in: /mnt/data3/lah/bless/nontrimmed.genome.bless**
+
+1. **copy them to wd using cp**
+2. **interleave**
+3. **split**
+4. 
