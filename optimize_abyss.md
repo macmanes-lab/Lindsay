@@ -1,3 +1,5 @@
+**NG50 value of 6280 the last time**
+
 ##Starting Trimmed bless and ABySS with trimmed transcriptome but no normalization with khmer  
 Running on 20 threads 
 	
@@ -367,6 +369,25 @@ WD: /mnt/data3/lah/abyss/no.ec.no.norm.no.txn
 7. chmod +x abyss.sh
 8. nohup ./abyss.sh &
 
+	abyss-fac k93-scaffolds.fa
+	
+		4265
+	
+	abyss-fac k101-scaffolds.fa
+	
+		4465
+		
+	abyss-fac k111-scaffolds.fa
+	
+		4357
+		
+	abyss-fac k121-scaffolds.fa
+	
+		3706	
+
+**Run abyss-fac for NG50 for all samples**
+
+		abyss-fac -e 665000000 scaffold.fa
 
 ##Run ABySS on error corrected non-trimmed genome with no khmer
 
@@ -377,4 +398,12 @@ WD: /mnt/data3/lah/abyss/nontrimmed.bless.no.norm.no.txn
 1. **copy them to wd using cp**
 2. **interleave**
 3. **split**
-4. 
+
+	split --lines=30000000 --additional-suffix .fastq nontrimmed.bless.genome.fq
+	
+4. nano abyss.sh
+
+		for k in 93 101 111 121; do
+        	mkdir k$k;
+         	abyss-pe -C k$k np=18 k=$k name=k$k n=5 in='../x*.fastq';
+        	done
