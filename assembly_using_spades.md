@@ -25,7 +25,7 @@ WD:/mnt/data3/lah/spades
 	it chose a kmer size of 21, 33, 66 and 77 because estimated read length (151) is equal to or greater than 150 
 	
 
-2.) Estimate N50 for K21, K33, K66, K77
+2.) Estimate N50 for K21, K33, K55, K77
 
 *For kmer 21*
 
@@ -47,7 +47,7 @@ WD:/mnt/data3/lah/spades/harmonia.spades/K3
 		N50-951
 		NG50-500
 		
-*for kmer 66**
+*for kmer 55**
 
 WD:	/mnt/data3/lah/spades/harmonia.spades/K55
 
@@ -64,7 +64,10 @@ WD:/mnt/data3/lah/spades/harmonia.spades/K77
 
 		N50-2099
 		NG50-1513
+2. abyss-fac -e 665000000 scaffolds.fasta -- this is the only one with scaffolds file
 
+		N50-2148
+		NG50-1543
 
 **Low N50 values!**
 
