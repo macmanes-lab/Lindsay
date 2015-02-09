@@ -407,3 +407,16 @@ WD: /mnt/data3/lah/abyss/nontrimmed.bless.no.norm.no.txn
         	mkdir k$k;
          	abyss-pe -C k$k np=18 k=$k name=k$k n=5 in='../x*.fastq';
         	done
+        	
+        	
+    abyss-fac -e 665000000 k101-scaffolds.fa
+    		
+    		5368
+    		
+    abyss-fac -e 665000000 k111-scaffolds.fa
+    
+    		5426
+    		
+    abyss-fac -e 665000000 k121-scaffolds.fa
+    
+    		4680					
