@@ -77,7 +77,12 @@ WD:/mnt/data3/lah/spades
 
 1.) tmux new -s spades_with_big_kmer
 
-		spades.py -1 harm1.fq -2 harm2.fq -t 24 -k 93,101,111,121 -m 500 -o harmonia.spades_with_large_kmer --careful
+		spades.py -1 harm1.fq -2 harm2.fq -t 24 -k 93,101,111,121 -m 500 -o harmonia.spades_large_kmer --careful 
+		
+		
+2.) Davinci had to go down, restart
 
+tmux new -s spades_with_big_kmer		
 
+		spades.py -1 harm1.fq -2 harm2.fq -t 24 -k 93,101,111,121 -m 500 -o harmonia.spades_large_kmer --careful --continue
 			
