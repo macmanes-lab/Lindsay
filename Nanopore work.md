@@ -48,3 +48,6 @@ DIR:/mnt/data3/lah/nanopore/pbcr
 		
 		Error message meant that the smrtanalysis wasn't in my PATH (b/c asked to download)
 6. Start run! 
+7. going back to tmux 
+
+		tmux at -t pbcr2
