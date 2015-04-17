@@ -22,7 +22,7 @@ DIR:/mnt/data3/lah/nanopore/pbcr
 	info about PBcR: http://wgs-assembler.sourceforge.net/wiki/index.php/PBcR 
 		
 
-####fastqToCA - used Illumina reads! 
+####fastqToCA - use Illumina reads! 
 
 1. moved nontrimmed (in bless) khmer normalized file to pbcr working directory
 	
@@ -37,7 +37,14 @@ DIR:/mnt/data3/lah/nanopore/pbcr
 		
 		tmux help: https://gist.github.com/henrik/1967800
 	
-2. fastqToCA -insertsize 200 30 -libraryname harmonia.illumina -technology illumina -type illumina -reads interleaved.ec.norm.harmonia.genome.fq > harmonia.illumina.frg
-
+2. fastqToCA -insertsize 200 30 -libraryname harmonia.illumina -technology illumina -type illumina -reads interleaved.ec.norm.harmonia.genome.fq > harmonia.illumina.frg 
+3. tmux new -s pbcr2
 
 3. PBcR -s spec.txt -fastq nanopore.harmonia.fastq -length 1000 -partitions 20 -l harmonia.nanopore.pbcr -t 10 -genomeSize 872000000 harmonia.illumina.frg
+4. 	Error that blasr and sawriter weren't in my path
+5. 	'which both'...in PATH
+
+		PATH=/share/smrtanalysis/install/smrtanalysis_2.3.0.140936/analysis/bin/:$PATH
+		
+		Error message meant that the smrtanalysis wasn't in my PATH (b/c asked to download)
+6. Start run! 
