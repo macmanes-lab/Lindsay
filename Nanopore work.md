@@ -81,3 +81,5 @@ DIR:/mnt/data3/lah/nanopore/pbcr
 
 				PBcR -s spec.txt -fastq nanopore.harmonia.altered.fastq -length 1000 -partitions 20 -l harmonia.nanopore.pbcr -t 10 -genomeSize 872000000 harmonia.illumina.frg
 
+12. kill run (reads are going to be too long) break up long reads...they can only be 65 kb long				
+
