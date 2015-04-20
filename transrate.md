@@ -17,8 +17,8 @@ WD: /mnt/data3/lah/transrate/
 
 1. copy files to transrate folder 
 	A. Assembled transcriptome: adult.notrim.bless.nonorm.trinity.fasta
-	B. left read: harmonia_adult.R1.fastq
-	C. right read: harmonia_adult.R2.fastq  
+	B. left read: no.trimmed.adult.1.corrected.fastq
+	C. right read: no.trimmed.adult.2.corrected.fastq 
 	D. reference: tribolium.protein.fa
 
-2. transrate -a adult.notrim.bless.nonorm.trinity.fasta -r tribolium.protein.fa -o adult.nontrim.ec.no.norm.transrate -l harmonia_adult.R1.fastq -i harmonia_adult.R2.fastq -t 10
+2. transrate -a adult.notrim.bless.nonorm.trinity.fasta -r tribolium.protein.fa -o adult.nontrim.ec.no.norm.transrate -l no.trimmed.adult.1.corrected.fastq -i no.trimmed.adult.2.corrected.fastq -t 10
