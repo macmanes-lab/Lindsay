@@ -83,3 +83,4 @@ DIR:/mnt/data3/lah/nanopore/pbcr
 
 12. kill run (reads are going to be too long) break up long reads...they can only be 65 kb long				
 
+#Pbcr isn't working...trying LSC
