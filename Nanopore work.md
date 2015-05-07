@@ -95,3 +95,6 @@ WD: /mnt/data3/lah/lsc
 			--default
 			--end-to-end -a -f -L 15 --mp 1,1 --np 1 --rdg 0,1 --rfg 0,1 --score-min L,0,-0.12 --no-unal
 			*probably a place to change and see what happens
+3. Start lsc
+
+		python /share/lsc/runLSC.py run.cfg			
