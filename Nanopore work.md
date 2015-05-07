@@ -84,3 +84,14 @@ DIR:/mnt/data3/lah/nanopore/pbcr
 12. kill run (reads are going to be too long) break up long reads...they can only be 65 kb long				
 
 #Pbcr isn't working...trying LSC
+WD: /mnt/data3/lah/lsc
+
+1. Error corrector
+2. Have to edit run.cfg file
+
+
+		1. No removing of tails of PacBio reads (I don't have PacBio reads) 
+		2. Running it with bowtie2 as aligner for mapping Illuminia to Nanopore
+			--default
+			--end-to-end -a -f -L 15 --mp 1,1 --np 1 --rdg 0,1 --rfg 0,1 --score-min L,0,-0.12 --no-unal
+			*probably a place to change and see what happens
