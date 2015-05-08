@@ -84,6 +84,8 @@ DIR:/mnt/data3/lah/nanopore/pbcr
 12. kill run (reads are going to be too long) break up long reads...they can only be 65 kb long				
 
 #Pbcr isn't working...trying LSC
+http://www.healthcare.uiowa.edu/labs/au/LSC/
+
 WD: /mnt/data3/lah/lsc
 
 1. Error corrector
@@ -97,4 +99,22 @@ WD: /mnt/data3/lah/lsc
 			*probably a place to change and see what happens
 3. Start lsc
 
-		python /share/lsc/runLSC.py run.cfg			
+		python /share/lsc/runLSC.py run.cfg
+		
+4. lsc finished at 11 AM (2PM-11AM)	
+5. There isn't any information given except percentage of corrected output sequences covered by short reads and quality scores
+6. Figure out average % coverage of short reads
+
+		#!/bin/bash
+
+		count=0;
+		total=0; 
+
+			for i in $( awk ' BEGIN { FS = "|" } { print $2; }' corrected_LR.fa )
+  						 do 
+     		total=$(echo $total+$i | bc )
+     
+   		done
+        num=$(grep '>' corrected_LR.fa |wc -l)
+
+		echo "scale=2; $total / $num" | bc				
