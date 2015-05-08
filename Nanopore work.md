@@ -117,4 +117,6 @@ WD: /mnt/data3/lah/lsc
    		done
         num=$(grep '>' corrected_LR.fa |wc -l)
 
-		echo "scale=2; $total / $num" | bc				
+		echo "scale=2; $total / $num" | bc		
+		
+	Average % coverage of short reads when making the long read is .73		
