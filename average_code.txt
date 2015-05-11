@@ -1,0 +1,15 @@
+
+#!/bin/bash
+
+count=0;
+total=0; 
+
+for i in $( awk ' BEGIN { FS = "|" } { print $2; }' corrected_LR.fa )
+   do 
+     total=$(echo $total+$i | bc )
+     #((count++))
+   done
+        num=$(grep '>' corrected_LR.fa |wc -l)
+
+echo "scale=2; $total / $num" | bc
+
