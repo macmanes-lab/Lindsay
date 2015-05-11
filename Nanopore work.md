@@ -1,10 +1,18 @@
 #Using nanopore (MinION) information to improve assembly#
 
-##Steps:
+## Possible Steps:
 1. pbcr
 2. LINKS (n50 = 66K)
 3. Gap fill - bc they are joined with N's 
 4. REAPER to break obvious missassemblies back up
+
+
+##What I actually did:
+1. LSC
+2. SPAdes
+3. Try wgs
+4. 
+
 
 ____________________________________________________
 
@@ -119,4 +127,22 @@ WD: /mnt/data3/lah/lsc
 
 		echo "scale=2; $total / $num" | bc		
 		
-	Average % coverage of short reads when making the long read is .73		
+	Average % coverage of short reads when making the long read is .73
+	
+	
+####I think LSC is good...73% average coverage of short reads
+
+
+		symbolic link
+			ln -s /mnt/data3/lah/spades/harm1.fq .
+			
+#SPAdes
+WD: /mnt/data3/lah/nanopore/spades
+
+1. tmux new -s spades
+
+		spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected_LR.fq -t 10 -m 500 -o harmonia.nanopore.spades --careful --only-assembler
+
+2. tmux at -t spades		
+	
+			
