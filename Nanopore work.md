@@ -143,6 +143,16 @@ WD: /mnt/data3/lah/nanopore/spades
 
 		spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected_LR.fq -t 10 -m 500 -o harmonia.nanopore.spades --careful --only-assembler
 
-2. tmux at -t spades		
+2. tmux at -t spades
+3. K77 didn't work
+4. Also got warning that the reads were 151 bp?
+
+		Maybe talking about the short reads that I used w/ nanopore
+5. abyss-fac -e 665000000 final_contigs.fasta 
+
+		1025
+6. Something went wrong. I think I need to pick the kmer value for spades. 				
+		
+
 	
 			
