@@ -148,10 +148,25 @@ WD: /mnt/data3/lah/nanopore/spades
 4. Also got warning that the reads were 151 bp?
 
 		Maybe talking about the short reads that I used w/ nanopore
-5. abyss-fac -e 665000000 final_contigs.fasta 
+5. abyss-fac -e 665000000 final_contigs.fasta for k55
 
 		1025
-6. Something went wrong. I think I need to pick the kmer value for spades. 				
+6. Something went wrong and it didn't scaffold using the Nanopore data
+
+
+		Error ==  system call for: "['/share/SPAdes-3.5.0-Linux/bin/spades', '/mnt/data3/lah/nanopore/spades/harmonia.nanopore.spades/K77/configs/config.info']" finished abnormally, err code: -9
+
+		======= SPAdes pipeline finished WITH WARNINGS!
+
+			=== Pipeline warnings:
+ 			
+ 			* Default k-mer sizes were set to [21, 33, 55, 77] because estimated read length (151) is equal to or greater than 150	
+ 
+ 7. Pick up where it left off
+ 		spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected_LR.fq -t 10 -m 500 -o harmonia.nanopore.spades --careful --only-assembler --continue
+ 		
+ 		== Error ==  the output_dir should exist for --continue and for --restart-from!
+			(wasn't up above the harmonia.nanopore.spades output file)								
 		
 
 	
