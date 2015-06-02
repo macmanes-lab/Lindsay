@@ -166,8 +166,21 @@ WD: /mnt/data3/lah/nanopore/spades
  		spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected_LR.fq -t 10 -m 500 -o harmonia.nanopore.spades --careful --only-assembler --continue
  		
  		== Error ==  the output_dir should exist for --continue and for --restart-from!
-			(wasn't up above the harmonia.nanopore.spades output file)								
-		
+			(wasn't up above the harmonia.nanopore.spades output file)
+			
+			
+8. abyss-fac -e 665000000 contigs.fasta					
+			
+			NG50 only 1608
+			
+9. abyss-fac -e 665000000 scaffolds.fasta						
+			
+			NG50 1633
+10. saving output : mv contigs.fasta 21.33.55.77.contigs.fasta		
+
+##Re-run spades with larger kmer	
+1. spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected_LR.fq -t 10 -m 500 -k 91,111,127 -o harmonia.nanopore.spades_91,111,127 --careful --only-assembler 
 
 	
+
 			
