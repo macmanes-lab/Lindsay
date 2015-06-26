@@ -19,3 +19,9 @@
 			817	Fragmented BUSCOs
 			808	Missing BUSCOs
 			2675	Total BUSCO groups searched
+7. mv run_harmonia.assembly.busco/ run_harmonia.assembly.arthropoda.busco
+8. **Use eukaryote database so it's more comparable to cegma**
+9. wget http://busco.ezlab.org/files/eukaryota_buscos.tar.gz
+10. tar -zxvf eukaryota_buscos.tar.gz
+11. tmux at -t busco
+12. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonia.assembly.eukaryota.busco -in k111-scaffolds.fa -l eukaryota/		
