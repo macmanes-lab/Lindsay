@@ -46,9 +46,26 @@ June 22, 2015
 		**Nothing super intersting here...just a lot of myosin and cytocrome c sequences
 
 June 25, 2015	
-##Blast transcriptomes with tribolium database
+##Blast adult transcriptome with tribolium database
 		
 1. ln -s /mnt/data3/lah/cpg_blast/tribolium.protein.fa
 2. tmux at -t blast
 3. makeblastdb -in tribolium.protein.fa -out tribolium -dbtype prot
 3. blastx -db tribolium -query ../adult.notrim.bless.nonorm.trinity.fasta -outfmt '6 qseqid sacc pident length evalue' -evalue 1e-10 -num_threads 1 > adult_txn_tribolium_blast
+4. **Find number of unique hits** cat adult_txn_tribolium_blast |awk '{print $1}' | uniq | wc -l
+
+			22981
+5. cat adult_txn_tribolium_blast | sort -gk5 | awk '{ print $1 }' | sort | uniq > adult_unique_evalue_hits_just_contigs
+6. cat adult_txn_tribolium_blast | sort -gk5  > adult_top_evalue_hits
+7. Take tribolium protein ID from top 20 hits. Consider unique contig , best % identity (if tie, keep both), evalue grep back to the tribolium.protein.fa 
+8. nano headers_to_grep
+9. grep -f headers_to_grep tribolium.protein.fa > tribolium_proteins_top20
+			
+			Nothing super interesting
+10. cat adult_txn_tribolium_blast | sort -gk5 | awk '{ print $2 }' | sort | uniq > adult_unique_evalue_hits_just_trib.proteins
+11. grep -f adult_unique_evalue_hits_just_trib.proteins > tribolium_proteins_all			
+
+#
+#Blast larva transcriptomes with tribolium database
+1. blastx -db tribolium -query ../larva.notrim.bless.nonorm.trinity.fasta -outfmt '6 qseqid sacc pident length evalue' -evalue 1e-10 -num_threads 1 > larva_txn_tribolium_blast 		
+	
