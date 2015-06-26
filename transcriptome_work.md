@@ -63,7 +63,8 @@ June 25, 2015
 			
 			Nothing super interesting
 10. cat adult_txn_tribolium_blast | sort -gk5 | awk '{ print $2 }' | sort | uniq > adult_unique_evalue_hits_just_trib.proteins
-11. grep -f adult_unique_evalue_hits_just_trib.proteins > tribolium_proteins_all			
+11. tmux new -s grep
+11. grep -f adult_unique_evalue_hits_just_trib.proteins tribolium.protein.fa > tribolium_proteins_all			
 
 #
 #Blast larva transcriptomes with tribolium database
