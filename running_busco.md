@@ -9,3 +9,13 @@
 3. ln -s /mnt/data3/lah/abyss/nontrimmed.bless.no.norm.no.txn/k111/k111-scaffolds.fa
 4. tmux new -s busco
 3. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonia.assembly.busco -in k111-scaffolds.fa -l arthropoda
+
+		Summarized benchmarks in BUSCO notation:
+			C:39%[D:23%],F:30%,M:30%,n:2675
+
+		Representing:
+			1050	Complete Single-Copy BUSCOs
+			630	Complete Duplicated BUSCOs
+			817	Fragmented BUSCOs
+			808	Missing BUSCOs
+			2675	Total BUSCO groups searched
