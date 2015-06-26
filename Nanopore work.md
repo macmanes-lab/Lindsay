@@ -179,7 +179,18 @@ WD: /mnt/data3/lah/nanopore/spades
 10. saving output : mv contigs.fasta 21.33.55.77.contigs.fasta		
 
 ##Re-run spades with larger kmer	
-1. spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected_LR.fq -t 10 -m 500 -k 91,111,127 -o harmonia.nanopore.spades_91,111,127 --careful --only-assembler 
+1. spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected_LR.fq -t 10 -m 500 -k 91,111,127 -o harmonia.nanopore.spades_91,111,127 --careful --only-assembler
+
+			Died
+			== Error ==  system call for: "['/share/SPAdes-3.5.0-Linux/bin/corrector', '/mnt/data3/lah/nanopore/spades/harmonia.nanopore.spades_91,111,127/mismatch_corrector/contigs/configs/corrector.info', '/mnt/data3/lah/nanopore/spades/harmonia.nanopore.spades_91,111,127/misc/assembled_contigs.fasta']" finished abnormally, err code: -11
+			
+2. tmux at -t spades			
+
+3. spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected_LR.fq -t 10 -m 500 -k 91,111,127 -o harmonia.nanopore.spades_91,111,127 --careful --only-assembler --continue			
+
+
+			 
+
 
 	
 
