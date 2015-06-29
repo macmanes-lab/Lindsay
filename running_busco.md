@@ -35,3 +35,8 @@
 			52	Fragmented BUSCOs
 			142	Missing BUSCOs
 			429	Total BUSCO groups searched
+			
+**Low when compared to cegma...try running it on nanopore data**
+
+1. ln -s /mnt/data3/lah/nanopore/spades/harmonia.nanopore.spades/21.33.55.77.scaffolds.fasta
+2. 	python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o nanopore.assembly.arthropoda -in 21.33.55.77.scaffolds.fasta -l arthropoda/		

@@ -68,6 +68,16 @@ WD:/mnt/data3/lah/spades/harmonia.spades/K77
 
 		N50-2148
 		NG50-1543
+		
+Didn't finish..restart
+
+1. spades.py -1 harm1.fq -2 harm2.fq -t 24 -m 500 -o harmonia.spades --careful --continue
+
+2. abyss-fac -e 665000000 21.33.55.77.scaffolds.fasta
+
+		1633
+				
+
 
 **Low N50 values!**
 
@@ -83,6 +93,9 @@ WD:/mnt/data3/lah/spades
 2.) Davinci had to go down, restart
 
 tmux new -s spades_with_big_kmer		
+**No scaffolding files**
 
-		spades.py -1 harm1.fq -2 harm2.fq -t 24 -k 93,101,111,121 -m 500 -o harmonia.spades_large_kmer --careful --continue
-			
+		spades.py -1 harm1.fq -2 harm2.fq -t 24 -k 93,101,111,121 -m 500 -o harmonia.spades_large_kmer --careful --continue		
+3. abyss-fac -e 665000000 scaffolds.fasta
+
+		3562

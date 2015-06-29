@@ -191,9 +191,16 @@ WD: /mnt/data3/lah/nanopore/spades
 4. abyss-fac -e 665000000 contigs.fasta
 		
 		2939			
-		
-		
+5. scaffolds didn't form spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected_LR.fq -t 10 -m 500 -k 91,111,127 -o harmonia.nanopore.spades_91,111,127 --careful --only-assembler --continue	
+
+6. abyss-fac -e 665000000 scaffolds.fasta 
+
+		3045
+	
+
+	
 **These low values are probably due to the fact that there is very low coverage for my nanopore work, follow this pipeline when I have more data**
+
 
 			 
 
