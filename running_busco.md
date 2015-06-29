@@ -25,3 +25,13 @@
 10. tar -zxvf eukaryota_buscos.tar.gz
 11. tmux at -t busco
 12. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonia.assembly.eukaryota.busco -in k111-scaffolds.fa -l eukaryota/		
+
+		Summarized benchmarks in BUSCO notation:
+		C:54%[D:32%],F:12%,M:33%,n:429
+
+		Representing:
+			235	Complete Single-Copy BUSCOs
+			140	Complete Duplicated BUSCOs
+			52	Fragmented BUSCOs
+			142	Missing BUSCOs
+			429	Total BUSCO groups searched
