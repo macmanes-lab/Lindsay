@@ -47,7 +47,8 @@ June 22, 2015
 
 June 25, 2015	
 ##Blast adult transcriptome with tribolium database
-		
+**WD: /mnt/data3/lah/transcriptome_work/tribolium_blast/adult**		
+
 1. ln -s /mnt/data3/lah/cpg_blast/tribolium.protein.fa
 2. tmux at -t blast
 3. makeblastdb -in tribolium.protein.fa -out tribolium -dbtype prot
@@ -57,16 +58,42 @@ June 25, 2015
 			22981
 5. cat adult_txn_tribolium_blast | sort -gk5 | awk '{ print $1 }' | sort | uniq > adult_unique_evalue_hits_just_contigs
 6. cat adult_txn_tribolium_blast | sort -gk5  > adult_top_evalue_hits
-7. Take tribolium protein ID from top 20 hits. Consider unique contig , best % identity (if tie, keep both), evalue grep back to the tribolium.protein.fa 
-8. nano headers_to_grep
-9. grep -f headers_to_grep tribolium.protein.fa > tribolium_proteins_top20
+7. *Take tribolium protein ID from top 20 hits. Consider unique contig , best % identity (if tie, keep both), evalue grep back to the tribolium.protein.fa* 
+8. nano adult_headers_to_grep
+9. grep -f headers_to_grep tribolium.protein.fa > adult_tribolium_proteins_top20
 			
 			Nothing super interesting
 10. cat adult_txn_tribolium_blast | sort -gk5 | awk '{ print $2 }' | sort | uniq > adult_unique_evalue_hits_just_trib.proteins
 11. tmux new -s grep
-11. grep -f adult_unique_evalue_hits_just_trib.proteins tribolium.protein.fa > tribolium_proteins_all			
+11. grep -f adult_unique_evalue_hits_just_trib.proteins tribolium.protein.fa > adult_tribolium_proteins_all			
 
 #
 #Blast larva transcriptomes with tribolium database
-1. blastx -db tribolium -query ../larva.notrim.bless.nonorm.trinity.fasta -outfmt '6 qseqid sacc pident length evalue' -evalue 1e-10 -num_threads 1 > larva_txn_tribolium_blast 		
-	
+
+**WD:/mnt/data3/lah/transcriptome_work/tribolium_blast/larva**
+
+1. blastx -db tribolium -query ../larva.notrim.bless.nonorm.trinity.fasta -outfmt '6 qseqid sacc pident length evalue' -evalue 1e-10 -num_threads 1 > larva_txn_tribolium_blast
+2. cat larva_txn_tribolium_blast | awk '{print $1}' | uniq | wc -l
+
+			23764
+3. cat larva_txn_tribolium_blast | sort -gk5 > larva_top_evalue_hits
+4. nano larva_headers_to_grep	
+
+			Interesting:
+			gi|91084419|ref|XP_967907.1| PREDICTED: protein Red [Tribolium castaneum]
+			This protein matches to contig # c10191_g1_i1
+
+5.  grep c10191_g1_i1 larva_txn_tribolium_blast | wc -l 
+			
+			1  
+					
+6. grep 91084419 larva_txn_tribolium_blast 
+
+			1 hit
+			 	
+			c10191_g1_i1    gi|91084419|ref|XP_967907.1|    78.99   476     0.0
+7. grep -A50 c10191_g1_i1 larva.notrim.bless.nonorm.trinity.fasta
+8. Blast contig 
+9. blastn hit to Aplysia californica (sea slug)red-like protein 
+10.tblastx hit to tribolium red protein as well as multiple other red proteins		
+			
