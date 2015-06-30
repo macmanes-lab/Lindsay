@@ -36,7 +36,20 @@
 			142	Missing BUSCOs
 			429	Total BUSCO groups searched
 			
-**Low when compared to cegma...try running it on nanopore data**
+**Low when compared to cegma, but seems to be consistent with other data (they are using many more orthologs than cegma)...try running it on nanopore data**
 
 1. ln -s /mnt/data3/lah/nanopore/spades/harmonia.nanopore.spades/21.33.55.77.scaffolds.fasta
 2. 	python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o nanopore.assembly.arthropoda -in 21.33.55.77.scaffolds.fasta -l arthropoda/		
+
+		Summarized benchmarks in BUSCO notation:
+			C:28%[D:2.3%],F:24%,M:46%,n:2675
+
+		Representing:
+			753	Complete Single-Copy BUSCOs
+			63	Complete Duplicated BUSCOs
+			666	Fragmented BUSCOs
+			1256	Missing BUSCOs
+			2675	Total BUSCO groups searched
+			
+			
+3. 	python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o nanopore.assembly.eukaryota -in 21.33.55.77.scaffolds.fasta -l eukaryota/			
