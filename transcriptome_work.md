@@ -223,6 +223,48 @@ June 25, 2015
 		
 7. mv good.merge.fasta larva.adult.transrate.good.fasta
 
+**score was bad, didn't include a comma so it may not be merged**
+
+1. transrate --merge-assemblies=merge.fasta --assembly ../adult.notrim.bless.nonorm.trinity.fasta,../larva.notrim.bless.nonorm.trinity.fasta --left adult.larva.1.corrected.fastq --right adult.larva.2.corrected.fastq 
+
+	-----------------------------------
+		[ INFO] 2015-07-01 13:44:54 : n seqs                       150862
+		[ INFO] 2015-07-01 13:44:54 : smallest                        200
+		[ INFO] 2015-07-01 13:44:54 : largest                       21577
+		[ INFO] 2015-07-01 13:44:54 : n bases                   131191876
+		[ INFO] 2015-07-01 13:44:54 : mean len                     869.62
+		[ INFO] 2015-07-01 13:44:54 : n under 200                       0
+		[ INFO] 2015-07-01 13:44:54 : n over 1k                     36919
+		[ INFO] 2015-07-01 13:44:54 : n over 10k                      110
+		[ INFO] 2015-07-01 13:44:54 : n with orf                    37806
+		[ INFO] 2015-07-01 13:44:54 : mean orf percent              56.96
+		[ INFO] 2015-07-01 13:44:54 : n90                             301
+		[ INFO] 2015-07-01 13:44:54 : n70                             849
+		[ INFO] 2015-07-01 13:44:54 : n50                            1778
+		[ INFO] 2015-07-01 13:44:54 : n30                            2900
+		[ INFO] 2015-07-01 13:44:54 : n10                            5078
+		[ INFO] 2015-07-01 13:44:54 : gc                             0.36
+		[ INFO] 2015-07-01 13:44:54 : gc skew                         0.0
+		[ INFO] 2015-07-01 13:44:54 : at skew                         0.0
+		[ INFO] 2015-07-01 13:44:54 : cpg ratio                      1.66
+		[ INFO] 2015-07-01 13:44:54 : bases n                           0
+		[ INFO] 2015-07-01 13:44:54 : proportion n                    0.0
+		[ INFO] 2015-07-01 13:44:54 : linguistic complexity          0.15
+
+###Vsearch
+
+**WD:/mnt/data3/lah/transcriptome_work/vsearch**
+
+- transrate merge is experimental, so running vsearch on my concatenated trinity files and  then rerunning transrate to see the difference
+
+1. tmux new -s vsearch_LH
+2. vsearch --fasta_width 0 --threads 5 --id .99 --cons_truncate   
+--cluster_fast ../adult.larva.notrim.bless.nonorm.trinity.fasta --strand both --centroid adult.larva.centroid.trinity.fasta
+
+--con_truncate = do not ignore terminal gaps in MSA for consensus
+-- reject is lower than .99
+--centroid = output file name
+--cluseter fast = input, but cluster these files
 ###kalisto		
 **WD: /mnt/data3/lah/transcriptome_work/kallisto/adult.larva.output**
 
