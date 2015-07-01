@@ -118,7 +118,11 @@ June 25, 2015
 5. cat adult_aphid_blast |awk '{print $1}' | uniq | wc -l 
 
 			279
-
+6. Top 100 nucleotide hits based on percent identity
+7. nano aphid_nucleotides
+8. grep -f aphid_nucleotides assembly2_scaffolds.fasta > protein_from_blastn 
+9. Nothing useful		
+	
 5. blastn -db aphid -query ../larva.notrim.bless.nonorm.trinity.fasta -outfmt '6 qseqid sacc pident length evalue' -evalue 1e-10 -num_threads 1 > larva_aphid_blast
 6. cat larva_aphid_blast |awk '{print $1}' | uniq | wc -l 
 
@@ -135,6 +139,8 @@ June 25, 2015
 			21009 
 			
 			**okay, but they are both insects so proteins will be conserved...what proteins are they?**		
+
+9. grab top 100...only telling me that they are scaffolds from assembly			
 
 
 ###Rerunning these with larva and adult combined 
@@ -157,7 +163,8 @@ June 25, 2015
 5. cat no.trimmed.adult.2.corrected.fastq no.trimmed.larva.2.corrected.fastq > adult.larva.2.corrected.fastq
 6. transrate --merge-assemblies=merge.fasta --assembly ../adult.notrim.bless.nonorm.trinity.fasta ../larva.notrim.bless.nonorm.trinity.fasta --left adult.larva.1.corrected.fastq --right adult.larva.2.corrected.fastq  
 
-				[ INFO] 2015-07-01 09:53:12 : Contig metrics:
+							Contig metrics:
+							
 		[ INFO] 2015-07-01 09:53:12 : -----------------------------------
 		[ INFO] 2015-07-01 09:53:12 : n seqs                        81986
 		[ INFO] 2015-07-01 09:53:12 : smallest                        200
@@ -182,3 +189,42 @@ June 25, 2015
 		[ INFO] 2015-07-01 09:53:12 : proportion n                    0.0
 		[ INFO] 2015-07-01 09:53:12 : linguistic complexity          0.15
 		[ INFO] 2015-07-01 09:53:12 : Contig metrics done in 19 seconds
+		
+		 						Read mapping metrics:
+		 						
+		[ INFO] 2015-07-01 11:34:59 : -----------------------------------
+		[ INFO] 2015-07-01 11:34:59 : fragments                 125489529
+		[ INFO] 2015-07-01 11:34:59 : fragments mapped          115787433
+		[ INFO] 2015-07-01 11:34:59 : p fragments mapped             0.92
+		[ INFO] 2015-07-01 11:34:59 : good mappings              86554402
+		[ INFO] 2015-07-01 11:34:59 : p good mapping                 0.69
+		[ INFO] 2015-07-01 11:34:59 : bad mappings               29233031
+		[ INFO] 2015-07-01 11:34:59 : potential bridges             24381
+		[ INFO] 2015-07-01 11:34:59 : bases uncovered             8106044
+		[ INFO] 2015-07-01 11:34:59 : p bases uncovered              0.11
+		[ INFO] 2015-07-01 11:34:59 : contigs uncovbase             49713
+		[ INFO] 2015-07-01 11:34:59 : p contigs uncovbase            0.61
+		[ INFO] 2015-07-01 11:34:59 : contigs uncovered              9369
+		[ INFO] 2015-07-01 11:34:59 : p contigs uncovered            0.11
+		[ INFO] 2015-07-01 11:34:59 : contigs lowcovered            56278
+		[ INFO] 2015-07-01 11:34:59 : p contigs lowcovered           0.69
+		[ INFO] 2015-07-01 11:34:59 : contigs segmented              8693
+		[ INFO] 2015-07-01 11:34:59 : p contigs segmented            0.11
+		[ INFO] 2015-07-01 11:34:59 : Read metrics done in 6107 seconds
+		[ INFO] 2015-07-01 11:34:59 : No reference provided, skipping comparative diagnostics
+		[ INFO] 2015-07-01 11:34:59 : TRANSRATE ASSEMBLY SCORE     0.1539
+		[ INFO] 2015-07-01 11:34:59 : -----------------------------------
+		[ INFO] 2015-07-01 11:34:59 : TRANSRATE OPTIMAL SCORE      0.2717
+		[ INFO] 2015-07-01 11:34:59 : TRANSRATE OPTIMAL CUTOFF     0.0543
+		[ INFO] 2015-07-01 11:34:59 : good contigs                  68176
+		[ INFO] 2015-07-01 11:34:59 : p good contigs                 0.83
+		[ INFO] 2015-07-01 11:34:59 : Writing contig metrics for each contig to transrate_merge.fasta_contigs.csv
+		[ INFO] 2015-07-01 11:35:22 : Writing analysis results to transrate_assemblies.csv
+		
+7. mv good.merge.fasta larva.adult.transrate.good.fasta
+
+###kalisto		
+**WD: /mnt/data3/lah/transcriptome_work/kallisto/adult.larva.output**
+1. ln -s /mnt/data3/lah/transcriptome_work/transrate/larva.adult.transrate.good.fasta
+2. kallisto index -i larva.adult.idx larva.adult.transrate.good.fasta 
+3. kallisto quant -i larva.adult.idx -o larva.adult --plaintext adult.larva.1.corrected.fastq adult.larva.2.corrected.fastq 
