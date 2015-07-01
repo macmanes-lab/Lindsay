@@ -7,9 +7,10 @@
 ####5. Transdecoder (putative coding sequences)
 
 June 22, 2015
-##1. kallisto
+###kallisto
 
-		WD: /mnt/data3/lah/transcriptome_work/kallisto
+**WD: /mnt/data3/lah/transcriptome_work/kallisto**
+
 1. make ghost files of transcriptome work 	
 
 	ln -s /mnt/data3/lah/bless/nontrimmed.adult.bless/trinity.with.no.norm/adult.notrim.bless.nonorm.trinity.fasta/adult.notrim.bless.nonorm.trinity.fasta
@@ -17,6 +18,7 @@ June 22, 2015
 	ln -s /mnt/data3/lah/bless/nontrimmed.larva.bless/larva.notrim.bless.nonorm.trinity.fasta/larva.notrim.bless.nonorm.trinity.fasta
 	
 2. tmux new -s kallisto
+
 ###Adult
 
 3. kallisto index -i adult.idx adult.notrim.bless.nonorm.trinity.fasta
@@ -27,9 +29,10 @@ June 22, 2015
 5. kallisto index -i larva.idx larva.notrim.bless.nonorm.trinity.fasta  
 6. kallisto quant -i larva.idx -o larva.output --plaintext no.trimmed.larva.1.corrected.fastq no.trimmed.larva.2.corrected.fastq 
 
-##Blast high abundance contigs with uniprot database
+###Blast high abundance contigs with uniprot database
 
-	WD: /mnt/data3/lah/transcriptome_work/kallisto/blast
+**WD: /mnt/data3/lah/transcriptome_work/kallisto/blast**
+
 1. Grep 20 best contigs (based on tpm of abundance.txt)from adult.notrim.bless.nonorm.trinity.fasta file
 
 
@@ -46,7 +49,7 @@ June 22, 2015
 		**Nothing super intersting here...just a lot of myosin and cytocrome c sequences
 
 June 25, 2015	
-##Blast adult transcriptome with tribolium database
+###Blast adult transcriptome with tribolium database
 **WD: /mnt/data3/lah/transcriptome_work/tribolium_blast/adult**		
 
 1. ln -s /mnt/data3/lah/cpg_blast/tribolium.protein.fa
@@ -68,7 +71,7 @@ June 25, 2015
 11. grep -f adult_unique_evalue_hits_just_trib.proteins tribolium.protein.fa > adult_tribolium_proteins_all			
 
 #
-#Blast larva transcriptomes with tribolium database
+###Blast larva transcriptomes with tribolium database
 
 **WD:/mnt/data3/lah/transcriptome_work/tribolium_blast/larva**
 
@@ -103,7 +106,7 @@ June 25, 2015
 				 Solenopsis invicta (ant)
 					and more!		
 					
-#Blast against Aphid to check for contamination
+###Blast against Aphid to check for contamination
 *nucleotide*
 
 1. wget https://www.aphidbase.com/aphidbase/content/download/3246/33646/file/assembly2_scaffolds.fasta.bz2	
@@ -127,9 +130,55 @@ June 25, 2015
 6.  makeblastdb -in aphidbase_2.1b_pep.fasta -out aphid_protein -dbtype prot
 7.  tmux new -s blast_protein
 7.  blastx -db aphid_protein -query ../adult.notrim.bless.nonorm.trinity.fasta -outfmt '6 qseqid sacc pident length evalue' -evalue 1e-10 -num_threads 1 > adult_aphid_protein_blast
+8.  cat adult_aphid_protein_blast | awk '{print$1}' | uniq | wc -l
+		
+			21009 
+			
+			**okay, but they are both insects so proteins will be conserved...what proteins are they?**		
 
 
-#Rerunning these with larva and adult combined 
+###Rerunning these with larva and adult combined 
 1. cat adult.notrim.bless.nonorm.trinity.fasta  larva.notrim.bless.nonorm.trinity.fasta > adult.larva.notrim.bless.nonorm.trinity.fasta
 2. tmux new -s cd_hit
 3. cd-hit-est -i adult.larva.notrim.bless.nonorm.trinity.fasta -o cd_hit_filtered_combined_file.fasta 			
+**Nevermind..use transrate to do this**
+
+
+
+#*Start over w/ merged and transrate corrected data 
+
+###1. Transrate w/ merge function  
+**WD:/mnt/data3/lah/transcriptome_work/transrate**
+
+1. You use the files that you used for the assembly...these are the corrected files for me
+2. Still in cd_hit tmux window
+3. merge left adult and larva together and right adult and larva together 
+4. cat no.trimmed.adult.1.corrected.fastq no.trimmed.larva.1.corrected.fastq > adult.larva.1.corrected.fastq
+5. cat no.trimmed.adult.2.corrected.fastq no.trimmed.larva.2.corrected.fastq > adult.larva.2.corrected.fastq
+6. transrate --merge-assemblies=merge.fasta --assembly ../adult.notrim.bless.nonorm.trinity.fasta ../larva.notrim.bless.nonorm.trinity.fasta --left adult.larva.1.corrected.fastq --right adult.larva.2.corrected.fastq  
+
+				[ INFO] 2015-07-01 09:53:12 : Contig metrics:
+		[ INFO] 2015-07-01 09:53:12 : -----------------------------------
+		[ INFO] 2015-07-01 09:53:12 : n seqs                        81986
+		[ INFO] 2015-07-01 09:53:12 : smallest                        200
+		[ INFO] 2015-07-01 09:53:12 : largest                       21577
+		[ INFO] 2015-07-01 09:53:12 : n bases                    75761011
+		[ INFO] 2015-07-01 09:53:12 : mean len                     924.07
+		[ INFO] 2015-07-01 09:53:12 : n under 200                       0
+		[ INFO] 2015-07-01 09:53:12 : n over 1k                     20777
+		[ INFO] 2015-07-01 09:53:12 : n over 10k                       94
+		[ INFO] 2015-07-01 09:53:12 : n with orf                    19952
+		[ INFO] 2015-07-01 09:53:12 : mean orf percent              54.83
+		[ INFO] 2015-07-01 09:53:12 : n90                             312
+		[ INFO] 2015-07-01 09:53:12 : n70                             956
+		[ INFO] 2015-07-01 09:53:12 : n50                            1979
+		[ INFO] 2015-07-01 09:53:12 : n30                            3262
+		[ INFO] 2015-07-01 09:53:12 : n10                            5634
+		[ INFO] 2015-07-01 09:53:12 : gc                             0.36
+		[ INFO] 2015-07-01 09:53:12 : gc skew                         0.0
+		[ INFO] 2015-07-01 09:53:12 : at skew                         0.0
+		[ INFO] 2015-07-01 09:53:12 : cpg ratio                      1.67
+		[ INFO] 2015-07-01 09:53:12 : bases n                           0
+		[ INFO] 2015-07-01 09:53:12 : proportion n                    0.0
+		[ INFO] 2015-07-01 09:53:12 : linguistic complexity          0.15
+		[ INFO] 2015-07-01 09:53:12 : Contig metrics done in 19 seconds
