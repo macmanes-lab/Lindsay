@@ -225,6 +225,7 @@ June 25, 2015
 
 ###kalisto		
 **WD: /mnt/data3/lah/transcriptome_work/kallisto/adult.larva.output**
+
 1. ln -s /mnt/data3/lah/transcriptome_work/transrate/larva.adult.transrate.good.fasta
 2. kallisto index -i larva.adult.idx larva.adult.transrate.good.fasta 
 3. kallisto quant -i larva.adult.idx -o larva.adult --plaintext adult.larva.1.corrected.fastq adult.larva.2.corrected.fastq 
