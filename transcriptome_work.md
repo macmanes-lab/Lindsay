@@ -295,6 +295,29 @@ July 1, 2015
 -- reject is lower than .99
 --centroid = output file name
 --cluseter fast = input, but cluster these files
+
+
+		Reading file ../adult.larva.notrim.bless.nonorm.trinity.fasta 100%  
+		131191876 nt in 150862 seqs, min 200, max 21577, avg 870
+		Indexing sequences 100%  
+		Masking 100%
+		Sorting by length 100%
+		Counting unique k-mers 100%  
+		Clustering 100%  
+		Writing clusters 100%  
+		Clusters: 130500 Size min 1, max 33, avg 1.2
+		Singletons: 115057, 76.3% of seqs, 88.2% of clusters
+		
+		
+###Transrate on vsearch		
+**WD:/mnt/data3/lah/transcriptome_work/transrate/vsearch_transrate**
+
+1. tmux new -s transrate
+2. transrate -a ../adult.larva.centroid.trinity.fasta -l ../adult.larva.1.corrected.fastq ../adult.larva.2.corrected.fastq
+
+
+	
+
 ###kalisto		
 **WD: /mnt/data3/lah/transcriptome_work/kallisto/adult.larva.output**
 
