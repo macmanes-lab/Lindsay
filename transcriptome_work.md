@@ -1,10 +1,11 @@
 #Transcriptome work
 ##Game plan:
-#### 1. kallisto 
-####2. blast to tribolium
-####3. PANTHER (gene ontology)
-####4. HMMER3 (conserved protein domains contained in the dataset using Pfam database)
+####1. Transrate
+#### 2. kallisto 
+####3. blast to tribolium/aphid 
+####4. PANTHER (gene ontology)
 ####5. Transdecoder (putative coding sequences)
+####6. Hmmer?
 
 June 22, 2015
 ###kallisto
@@ -105,6 +106,7 @@ June 25, 2015
 				 Culex quinquefasciatus (mosquito)
 				 Solenopsis invicta (ant)
 					and more!		
+July 1, 2015
 					
 ###Blast against Aphid to check for contamination
 *nucleotide*
@@ -250,6 +252,34 @@ June 25, 2015
 		[ INFO] 2015-07-01 13:44:54 : bases n                           0
 		[ INFO] 2015-07-01 13:44:54 : proportion n                    0.0
 		[ INFO] 2015-07-01 13:44:54 : linguistic complexity          0.15
+		
+		 Read mapping metrics:
+		[ INFO] 2015-07-01 16:21:31 : -----------------------------------
+		[ INFO] 2015-07-01 16:21:31 : fragments                 125489529
+		[ INFO] 2015-07-01 16:21:31 : fragments mapped          114116862
+		[ INFO] 2015-07-01 16:21:31 : p fragments mapped             0.91
+		[ INFO] 2015-07-01 16:21:31 : good mappings              87320928
+		[ INFO] 2015-07-01 16:21:31 : p good mapping                  0.7
+		[ INFO] 2015-07-01 16:21:31 : bad mappings               26795934
+		[ INFO] 2015-07-01 16:21:31 : potential bridges             39488
+		[ INFO] 2015-07-01 16:21:31 : bases uncovered            17171165
+		[ INFO] 2015-07-01 16:21:31 : p bases uncovered              0.13
+		[ INFO] 2015-07-01 16:21:31 : contigs uncovbase             96872
+		[ INFO] 2015-07-01 16:21:31 : p contigs uncovbase            0.64
+		[ INFO] 2015-07-01 16:21:31 : contigs uncovered             26406
+		[ INFO] 2015-07-01 16:21:31 : p contigs uncovered            0.18
+		[ INFO] 2015-07-01 16:21:31 : contigs lowcovered           111265
+		[ INFO] 2015-07-01 16:21:31 : p contigs lowcovered           0.74
+		[ INFO] 2015-07-01 16:21:31 : contigs segmented             14065
+		[ INFO] 2015-07-01 16:21:31 : p contigs segmented            0.09
+		[ INFO] 2015-07-01 16:21:31 : Read metrics done in 9397 seconds
+		[ INFO] 2015-07-01 16:21:31 : No reference provided, skipping comparative diagnostics
+		[ INFO] 2015-07-01 16:21:31 : TRANSRATE ASSEMBLY SCORE     0.1507
+		[ INFO] 2015-07-01 16:21:31 : -----------------------------------
+		[ INFO] 2015-07-01 16:21:31 : TRANSRATE OPTIMAL SCORE      0.2944
+		[ INFO] 2015-07-01 16:21:31 : TRANSRATE OPTIMAL CUTOFF     0.0557
+		[ INFO] 2015-07-01 16:21:31 : good contigs                 122298
+		[ INFO] 2015-07-01 16:21:31 : p good contigs                 0.81
 
 ###Vsearch
 
