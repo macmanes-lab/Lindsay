@@ -253,8 +253,7 @@ July 1, 2015
 		[ INFO] 2015-07-01 13:44:54 : proportion n                    0.0
 		[ INFO] 2015-07-01 13:44:54 : linguistic complexity          0.15
 		
-		 Read mapping metrics:
-		[ INFO] 2015-07-01 16:21:31 : -----------------------------------
+		 Read mapping metrics: -----------------------------------
 		[ INFO] 2015-07-01 16:21:31 : fragments                 125489529
 		[ INFO] 2015-07-01 16:21:31 : fragments mapped          114116862
 		[ INFO] 2015-07-01 16:21:31 : p fragments mapped             0.91
@@ -313,10 +312,45 @@ July 1, 2015
 **WD:/mnt/data3/lah/transcriptome_work/transrate/vsearch_transrate**
 
 1. tmux new -s transrate
-2. transrate -a ../adult.larva.centroid.trinity.fasta -l ../adult.larva.1.corrected.fastq ../adult.larva.2.corrected.fastq
+2. transrate -a unique_headers_adult.larva.centroid.trinity.fasta -l ../adult.larva.1.corrected.fastq ../adult.larva.2.corrected.fastq
+
+**Because it is taking 2 trinity assemblies and merging them together, there are overlapping header identifiers...transrate doesn't like this**
+
+**Rename the headers w/ 0,1,2,3 etc**
+
+	awk '/^>/{print ">" ++i; next}{print}' < input.fa > output.fa
+
+Search for something that begins w/ >, if you see it print that and 0, 1, 2, 3, etc
+< input.fa is another way of saying cat | (pipe the input file to that command) 
+
+3. awk '/^>/{print ">" ++i; next}{print}' < adult.larva.centroid.trinity.fasta  > unique_headers_adult.larva.centroid.trinity.fasta	
+4. transrate -a unique_headers_adult.larva.centroid.trinity.fasta -l ../adult.larva.1.corrected.fastq ../adult.larva.2.corrected.fastq
 
 
-	
+		 --------------------Contig metrics:---------------
+		[ INFO] 2015-07-03 08:09:20 : n seqs                       130500
+		[ INFO] 2015-07-03 08:09:20 : smallest                        200
+		[ INFO] 2015-07-03 08:09:20 : largest                       21577
+		[ INFO] 2015-07-03 08:09:20 : n bases                   105315076
+		[ INFO] 2015-07-03 08:09:20 : mean len                     807.01
+		[ INFO] 2015-07-03 08:09:20 : n under 200                       0
+		[ INFO] 2015-07-03 08:09:20 : n over 1k                     29227
+		[ INFO] 2015-07-03 08:09:20 : n over 10k                       85
+		[ INFO] 2015-07-03 08:09:20 : n with orf                    29837
+		[ INFO] 2015-07-03 08:09:20 : mean orf percent              56.19
+		[ INFO] 2015-07-03 08:09:20 : n90                             287
+		[ INFO] 2015-07-03 08:09:20 : n70                             728
+		[ INFO] 2015-07-03 08:09:20 : n50                            1578
+		[ INFO] 2015-07-03 08:09:20 : n30                            2644
+		[ INFO] 2015-07-03 08:09:20 : n10                            4752
+		[ INFO] 2015-07-03 08:09:20 : gc                             0.36
+		[ INFO] 2015-07-03 08:09:20 : gc skew                         0.0
+		[ INFO] 2015-07-03 08:09:20 : at skew                         0.0
+		[ INFO] 2015-07-03 08:09:20 : cpg ratio                      1.66
+		[ INFO] 2015-07-03 08:09:20 : bases n                           0
+		[ INFO] 2015-07-03 08:09:20 : proportion n                    0.0
+		[ INFO] 2015-07-03 08:09:20 : linguistic complexity          0.14
+
 
 ###kalisto		
 **WD: /mnt/data3/lah/transcriptome_work/kallisto/adult.larva.output**
