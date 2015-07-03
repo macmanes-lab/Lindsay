@@ -312,7 +312,7 @@ July 1, 2015
 **WD:/mnt/data3/lah/transcriptome_work/transrate/vsearch_transrate**
 
 1. tmux new -s transrate
-2. transrate -a unique_headers_adult.larva.centroid.trinity.fasta -l ../adult.larva.1.corrected.fastq ../adult.larva.2.corrected.fastq
+2. transrate -a unique_headers_adult.larva.centroid.trinity.fasta -l ../adult.larva.1.corrected.fastq -r ../adult.larva.2.corrected.fastq
 
 **Because it is taking 2 trinity assemblies and merging them together, there are overlapping header identifiers...transrate doesn't like this**
 
@@ -324,7 +324,7 @@ Search for something that begins w/ >, if you see it print that and 0, 1, 2, 3, 
 < input.fa is another way of saying cat | (pipe the input file to that command) 
 
 3. awk '/^>/{print ">" ++i; next}{print}' < adult.larva.centroid.trinity.fasta  > unique_headers_adult.larva.centroid.trinity.fasta	
-4. transrate -a unique_headers_adult.larva.centroid.trinity.fasta -l ../adult.larva.1.corrected.fastq ../adult.larva.2.corrected.fastq
+4. transrate -a unique_headers_adult.larva.centroid.trinity.fasta -l ../adult.larva.1.corrected.fastq -r ../adult.larva.2.corrected.fastq
 
 
 		 --------------------Contig metrics:---------------
@@ -350,11 +350,38 @@ Search for something that begins w/ >, if you see it print that and 0, 1, 2, 3, 
 		[ INFO] 2015-07-03 08:09:20 : bases n                           0
 		[ INFO] 2015-07-03 08:09:20 : proportion n                    0.0
 		[ INFO] 2015-07-03 08:09:20 : linguistic complexity          0.14
+		
+		 -----------------------------------
+		[ INFO] 2015-07-03 11:45:51 : fragments                 125489529
+		[ INFO] 2015-07-03 11:45:51 : fragments mapped          117924573
+		[ INFO] 2015-07-03 11:45:51 : p fragments mapped             0.94
+		[ INFO] 2015-07-03 11:45:51 : good mappings              90812245
+		[ INFO] 2015-07-03 11:45:51 : p good mapping                 0.72
+		[ INFO] 2015-07-03 11:45:51 : bad mappings               27112328
+		[ INFO] 2015-07-03 11:45:51 : potential bridges             23525
+		[ INFO] 2015-07-03 11:45:51 : bases uncovered             8316387
+		[ INFO] 2015-07-03 11:45:51 : p bases uncovered              0.08
+		[ INFO] 2015-07-03 11:45:51 : contigs uncovbase             76324
+		[ INFO] 2015-07-03 11:45:51 : p contigs uncovbase            0.58
+		[ INFO] 2015-07-03 11:45:51 : contigs uncovered             16131
+		[ INFO] 2015-07-03 11:45:51 : p contigs uncovered            0.12
+		[ INFO] 2015-07-03 11:45:51 : contigs lowcovered            96791
+		[ INFO] 2015-07-03 11:45:51 : p contigs lowcovered           0.74
+		[ INFO] 2015-07-03 11:45:51 : contigs segmented             12393
+		[ INFO] 2015-07-03 11:45:51 : p contigs segmented            0.09
+		[ INFO] 2015-07-03 11:45:51 : Read metrics done in 5072 seconds
+		[ INFO] 2015-07-03 11:45:51 : No reference provided, skipping comparative diagnostics
+		[ INFO] 2015-07-03 11:45:51 : TRANSRATE ASSEMBLY SCORE     0.2182
+		[ INFO] 2015-07-03 11:45:51 : -----------------------------------
+		[ INFO] 2015-07-03 11:45:51 : TRANSRATE OPTIMAL SCORE       0.316
+		[ INFO] 2015-07-03 11:45:51 : TRANSRATE OPTIMAL CUTOFF     0.0543
+		[ INFO] 2015-07-03 11:45:51 : good contigs                 116514
+		[ INFO] 2015-07-03 11:45:51 : p good contigs                 0.89
 
 
 ###kalisto		
 **WD: /mnt/data3/lah/transcriptome_work/kallisto/adult.larva.output**
 
-1. ln -s /mnt/data3/lah/transcriptome_work/transrate/larva.adult.transrate.good.fasta
-2. kallisto index -i larva.adult.idx larva.adult.transrate.good.fasta 
-3. kallisto quant -i larva.adult.idx -o larva.adult --plaintext adult.larva.1.corrected.fastq adult.larva.2.corrected.fastq 
+1. ln -s /mnt/data3/lah/transcriptome_work/transrate/vsearch_transrate/good.unique_headers_adult.larva.centroid.trinity.fasta
+2. kallisto index -i adult.larva.idx good.unique_headers_adult.larva.centroid.trinity.fasta
+3. kallisto quant -i adult.larva.idx -o adult.larva.merged --plaintext adult.larva.1.corrected.fastq adult.larva.2.corrected.fastq 
