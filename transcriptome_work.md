@@ -391,3 +391,19 @@ Search for something that begins w/ >, if you see it print that and 0, 1, 2, 3, 
 2. grep -w to force it to only match whole word (it would pull 8576, 18576, 28576 etc)
 3. nano adult.larvadb
 4. blastx -db uniprot -query adult.larvadb -outfmt '6 qseqid sacc pident length evalue' -evalue 1e-10 -num_threads 5 > adult_larva_txn_blast
+5. cat adult_larva_txn_blast | awk '{print $1}' | uniq > unique
+
+		9060
+		560
+		106883
+		18760
+		110916
+		16335
+		24983
+		35148
+6. Lots of hits, but only 8 unique contigs...take best hit for each contig based on %ID
+7. All cellular process type of things
+
+		Actin
+		Cytochromes
+		Elongation factors
