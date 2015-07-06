@@ -378,10 +378,16 @@ Search for something that begins w/ >, if you see it print that and 0, 1, 2, 3, 
 		[ INFO] 2015-07-03 11:45:51 : good contigs                 116514
 		[ INFO] 2015-07-03 11:45:51 : p good contigs                 0.89
 
-
+**This is better! Use the vsearch assembly for future work**
 ###kalisto		
 **WD: /mnt/data3/lah/transcriptome_work/kallisto/adult.larva.output**
 
 1. ln -s /mnt/data3/lah/transcriptome_work/transrate/vsearch_transrate/good.unique_headers_adult.larva.centroid.trinity.fasta
 2. kallisto index -i adult.larva.idx good.unique_headers_adult.larva.centroid.trinity.fasta
 3. kallisto quant -i adult.larva.idx -o adult.larva.merged --plaintext adult.larva.1.corrected.fastq adult.larva.2.corrected.fastq 
+
+##Blast kallisto results to uinprot database 
+1. grep 20 best contigs based on tpm from good.unique_headers_adult.larva.centroid.trinity.fasta
+2. grep -w to force it to only match whole word (it would pull 8576, 18576, 28576 etc)
+3. nano adult.larvadb
+4. blastx -db uniprot -query adult.larvadb -outfmt '6 qseqid sacc pident length evalue' -evalue 1e-10 -num_threads 5 > adult_larva_txn_blast
