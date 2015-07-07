@@ -407,3 +407,16 @@ Search for something that begins w/ >, if you see it print that and 0, 1, 2, 3, 
 		Actin
 		Cytochromes
 		Elongation factors
+		
+
+##Panther
+1. Take results of blast from kallisto and download onto my computer
+2. Copy column 2 (upiprot headers)	
+3. Paste into new column
+4. Find sp| and replace with nothing
+5. In the next column run =LEFT(F1,FIND("|",F1)-1)
+6. Copy this column (only the uniprot ID to new file) paste special, values
+7. Save as .csv	
+8. Download the genelist file (downloaded to Lindsay directory)
+9. See pie chart (nothing really interesting again)
+10. Download piecharts
