@@ -1,0 +1,37 @@
+
+Molecular- 
+
+1	binding (GO:0005488)	2	11.8%	12.5%
+2	structural molecule activity (GO:0005198)	11	64.7%	68.8%
+3	catalytic activity (GO:0003824)	3	17.6%	18.8%
+
+Biological- 
+1	developmental process (GO:0032502)	6	35.3%	14.0%
+2	cellular process (GO:0009987)	12	70.6%	27.9%
+3	multicellular organismal process (GO:0032501)	1	5.9%	2.3%
+4	metabolic process (GO:0008152)	3	17.6%	7.0%
+5	cellular component organization or biogenesis (GO:0071840)	10	58.8%	23.3%
+6	localization (GO:0051179)	11	64.7%	25.6%
+
+Cellular-
+1	cell part (GO:0044464)	11	64.7%	68.8%
+2	organelle (GO:0043226)	5	29.4%	31.3%
+
+Protein-
+1	cytoskeletal protein (PC00085)	11	64.7%	68.8%
+2	calcium-binding protein (PC00060)	2	11.8%	12.5%
+3	oxidoreductase (PC00176)	3	17.6%	18.8%
+
+Pathway-
+1	Cadherin signaling pathway (P00012)	8	47.1%	14.8%
+2	De novo purine biosynthesis (P02738)	1	5.9%	1.9%
+3	Integrin signalling pathway (P00034)	2	11.8%	3.7%
+4	Alzheimer disease-presenilin pathway (P00004)	8	47.1%	14.8%
+5	Huntington disease (P00029)	9	52.9%	16.7%
+6	Inflammation mediated by chemokine and cytokine signaling pathway (P00031)	7	41.2%	13.0%
+7	Wnt signaling pathway (P00057)	1	5.9%	1.9%
+8	Heterotrimeric G-protein signaling pathway-rod outer segment phototransduction (P00028)	1	5.9%	1.9%
+9	TGF-beta signaling pathway (P00052)	1	5.9%	1.9%
+10	ATP synthesis (P02721)	1	5.9%	1.9%
+11	Cytoskeletal regulation by Rho GTPase (P00016)	7	41.2%	13.0%
+12	Nicotinic acetylcholine receptor signaling pathway (P00044)	8	47.1%	14.8%

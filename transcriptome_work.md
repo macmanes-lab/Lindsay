@@ -420,3 +420,5 @@ Search for something that begins w/ >, if you see it print that and 0, 1, 2, 3, 
 8. Download the genelist file (downloaded to Lindsay directory)
 9. See pie chart (nothing really interesting again)
 10. Download piecharts
+11. Do this with adult and larva too
+12. 

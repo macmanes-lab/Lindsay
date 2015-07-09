@@ -1,0 +1,17 @@
+DROME|FlyBase=FBgn0013674|UniProtKB=P00399	P00399	Cytochrome c oxidase subunit 1;mt:CoI;ortholog	CYTOCHROME C OXIDASE SUBUNIT 1 (PTHR10422:SF18)	oxidase	Drosophila melanogaster
+DROME|FlyBase=FBgn0000043|UniProtKB=P02572	P02572	Actin-42A;Act42A;ortholog	ACTIN-42A (PTHR11937:SF244)	actin and actin related protein	Drosophila melanogaster
+DROME|FlyBase=FBgn0011741|UniProtKB=P45890	P45890	Actin-related protein 6;Arp6;ortholog	ACTIN-RELATED PROTEIN 6 (PTHR11937:SF47)		Drosophila melanogaster
+DROME|FlyBase=FBgn0000046|UniProtKB=P10981	P10981	Actin-87E;Act87E;ortholog	ACTIN-57B-RELATED (PTHR11937:SF228)	actin and actin related protein	Drosophila melanogaster
+DROME|FlyBase=FBgn0000042|UniProtKB=P10987	P10987	Actin-5C;Act5C;ortholog	ACTIN-5C (PTHR11937:SF251)	actin and actin related protein	Drosophila melanogaster
+DROME|FlyBase=FBgn0011742|UniProtKB=P45888	P45888	Actin-related protein 2;Arp2;ortholog	ACTIN-RELATED PROTEIN 2 (PTHR11937:SF37)	actin and actin related protein	Drosophila melanogaster
+DROME|FlyBase=FBgn0000045|UniProtKB=P02574	P02574	Actin, larval muscle;Act79B;ortholog	ACTIN, LARVAL MUSCLE (PTHR11937:SF178)	actin and actin related protein	Drosophila melanogaster
+DROME|FlyBase=FBgn0013675|UniProtKB=P00408	P00408	Cytochrome c oxidase subunit 2;mt:CoII;ortholog	CYTOCHROME C OXIDASE SUBUNIT 2 (PTHR22888:SF9)	oxidoreductase	Drosophila melanogaster
+DROME|FlyBase=FBgn0000047|UniProtKB=P83967	P83967	Actin, indirect flight muscle;Act88F;ortholog	ACTIN, INDIRECT FLIGHT MUSCLE (PTHR11937:SF162)	actin and actin related protein	Drosophila melanogaster
+DROME|FlyBase=FBgn0011745|UniProtKB=P45889	P45889	Actin-related protein 1;Arp1;ortholog	ACTIN-RELATED PROTEIN 1 (PTHR11937:SF46)	actin and actin related protein	Drosophila melanogaster
+DROME|FlyBase=FBgn0003514|UniProtKB=P40423	P40423	Myosin regulatory light chain sqh;sqh;ortholog	MYOSIN REGULATORY LIGHT CHAIN SQH (PTHR23049:SF34)		Drosophila melanogaster
+DROME|FlyBase=FBgn0002773|UniProtKB=P18432	P18432	Myosin regulatory light chain 2;Mlc2;ortholog	MYOSIN REGULATORY LIGHT CHAIN 2 (PTHR23049:SF4)	actin family cytoskeletal protein;calmodulin	Drosophila melanogaster
+DROME|FlyBase=FBgn0013676|UniProtKB=P00417	P00417	Cytochrome c oxidase subunit 3;mt:CoIII;ortholog	CYTOCHROME C OXIDASE SUBUNIT 3 (PTHR11403:SF7)	oxidase	Drosophila melanogaster
+DROME|FlyBase=FBgn0011743|UniProtKB=P45891	P45891	Actin-like protein 53D;Arp53D;ortholog	ACTIN, CYTOPLASMIC 2 (PTHR11937:SF155)	actin and actin related protein	Drosophila melanogaster
+DROME|FlyBase=FBgn0000253|UniProtKB=P62152	P62152	Calmodulin;Cam;ortholog	CALMODULIN (PTHR23050:SF20)	calmodulin	Drosophila melanogaster
+DROME|FlyBase=FBgn0000044|UniProtKB=P53501	P53501	Actin-57B;Act57B;ortholog	ACTIN-57B-RELATED (PTHR11937:SF228)	actin and actin related protein	Drosophila melanogaster
+DROME|FlyBase=FBgn0262716|UniProtKB=P32392	P32392	Actin-related protein 3;Arp3;ortholog	ACTIN-RELATED PROTEIN 3 (PTHR11937:SF31)	actin and actin related protein	Drosophila melanogaster

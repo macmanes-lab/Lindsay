@@ -1,0 +1,50 @@
+Molecular
+1	translation regulator activity (GO:0045182)	2	5.9%	5.3%
+2	binding (GO:0005488)	7	20.6%	18.4%
+3	receptor activity (GO:0004872)	10	29.4%	26.3%
+4	enzyme regulator activity (GO:0030234)	1	2.9%	2.6%
+5	structural molecule activity (GO:0005198)	13	38.2%	34.2%
+6	catalytic activity (GO:0003824)	5	14.7%	13.2%
+
+Biological
+1	response to stimulus (GO:0050896)	3	8.8%	3.8%
+2	developmental process (GO:0032502)	6	17.6%	7.6%
+3	cellular process (GO:0009987)	24	70.6%	30.4%
+4	multicellular organismal process (GO:0032501)	9	26.5%	11.4%
+5	metabolic process (GO:0008152)	6	17.6%	7.6%
+6	biological regulation (GO:0065007)	6	17.6%	7.6%
+7	cellular component organization or biogenesis (GO:0071840)	12	35.3%	15.2%
+8	localization (GO:0051179)	13	38.2%	16.5%
+
+Cellular
+1	membrane (GO:0016020)	1	2.9%	4.8%
+2	cell part (GO:0044464)	13	38.2%	61.9%
+3	organelle (GO:0043226)	7	20.6%	33.3%
+
+Protein 
+1	receptor (PC00197)	12	35.3%	32.4%
+2	nucleic acid binding (PC00171)	2	5.9%	5.4%
+3	hydrolase (PC00121)	2	5.9%	5.4%
+4	cytoskeletal protein (PC00085)	13	38.2%	35.1%
+5	calcium-binding protein (PC00060)	2	5.9%	5.4%
+6	enzyme modulator (PC00095)	3	8.8%	8.1%
+7	cell junction protein (PC00070)	1	2.9%	2.7%
+8	oxidoreductase (PC00176)	2	5.9%	5.4%
+
+Pathway
+1	Cadherin signaling pathway (P00012)	8	23.5%	12.9%
+2	De novo purine biosynthesis (P02738)	1	2.9%	1.6%
+3	Integrin signalling pathway (P00034)	2	5.9%	3.2%
+4	Alzheimer disease-presenilin pathway (P00004)	8	23.5%	12.9%
+5	Inflammation mediated by chemokine and cytokine signaling pathway (P00031)	7	20.6%	11.3%
+6	Huntington disease (P00029)	9	26.5%	14.5%
+7	Wnt signaling pathway (P00057)	1	2.9%	1.6%
+8	Heterotrimeric G-protein signaling pathway-rod outer segment phototransduction (P00028)	4	11.8%	6.5%
+9	5HT2 type receptor mediated signaling pathway (P04374)	2	5.9%	3.2%
+10	Heterotrimeric G-protein signaling pathway-Gi alpha and Gs alpha mediated pathway (P00026)	1	2.9%	1.6%
+11	TGF-beta signaling pathway (P00052)	1	2.9%	1.6%
+12	Dopamine receptor mediated signaling pathway (P05912)	1	2.9%	1.6%
+13	ATP synthesis (P02721)	1	2.9%	1.6%
+14	Cytoskeletal regulation by Rho GTPase (P00016)	7	20.6%	11.3%
+15	Nicotinic acetylcholine receptor signaling pathway (P00044)	9	26.5%	14.5%
+
