@@ -426,3 +426,6 @@ Search for something that begins w/ >, if you see it print that and 0, 1, 2, 3, 
 
 ##Kallisto on vsearch merged file (consensus sequence) with larva reads 
 1. kallisto quant -i adult.larva.idx -o adult.larva.merged_larva --plaintext no.trimmed.larva.1.corrected.fastq no.trimmed.larva.2.corrected.fastq
+
+##Kallisto on vsearch merged file (consensus sequence) with adult reads 
+1. kallisto quant -i adult.larva.idx -o adult.larva.merged_adult --plaintext no.trimmed.adult.1.corrected.fastq no.trimmed.adult.2.corrected.fastq
