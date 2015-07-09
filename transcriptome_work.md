@@ -379,7 +379,8 @@ Search for something that begins w/ >, if you see it print that and 0, 1, 2, 3, 
 		[ INFO] 2015-07-03 11:45:51 : p good contigs                 0.89
 
 **This is better! Use the vsearch assembly for future work**
-###kalisto		
+
+###kalisto	on merged files with merged read files
 **WD: /mnt/data3/lah/transcriptome_work/kallisto/adult.larva.output**
 
 1. ln -s /mnt/data3/lah/transcriptome_work/transrate/vsearch_transrate/good.unique_headers_adult.larva.centroid.trinity.fasta
@@ -421,4 +422,7 @@ Search for something that begins w/ >, if you see it print that and 0, 1, 2, 3, 
 9. See pie chart (nothing really interesting again)
 10. Download piecharts
 11. Do this with adult and larva too
-12. 
+
+
+##Kallisto on vsearch merged file (consensus sequence) with larva reads 
+1. kallisto quant -i adult.larva.idx -o adult.larva.merged_larva --plaintext no.trimmed.larva.1.corrected.fastq no.trimmed.larva.2.corrected.fastq
