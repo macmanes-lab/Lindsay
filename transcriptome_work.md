@@ -425,7 +425,30 @@ Search for something that begins w/ >, if you see it print that and 0, 1, 2, 3, 
 
 
 ##Kallisto on vsearch merged file (consensus sequence) with larva reads 
-1. kallisto quant -i adult.larva.idx -o adult.larva.merged_larva --plaintext no.trimmed.larva.1.corrected.fastq no.trimmed.larva.2.corrected.fastq
+1. kallisto quant -i adult.larva.idx -o adult.larva.merged_larva --plaintext no.trimmed.larva.1.corrected.fastq no.trimmed.larva.2.corrected.fasta
 
 ##Kallisto on vsearch merged file (consensus sequence) with adult reads 
 1. kallisto quant -i adult.larva.idx -o adult.larva.merged_adult --plaintext no.trimmed.adult.1.corrected.fastq no.trimmed.adult.2.corrected.fastq
+
+##Blast w/ uniprot
+**WD: /mnt/data3/lah/transcriptome_work/kallisto/blast**
+
+1. Grab all of the top contig hits from vsearch file
+2. Download files in to excel and grab top 20 from adult, larva, and top 10 combined
+
+
+#####adult#####
+1. grep -w -A1 -f adult.larva.merged_adult_top20 good.unique_headers_adult.larva.centroid.trinity.fasta > adult_top_20_contigs
+2. 4. blastx -db uniprot -query adult_top_20_contigs -outfmt '6 qseqid sacc pident length evalue' -evalue 1e-10 -num_threads 5 > adult.larva_adult
+
+#####larva#####
+1.  grep -w -A1 -f adult.larva.merged_larva_top20 good.unique_headers_adult.larva.centroid.trinity.fasta > larva_top_20_contigs
+2. blastx -db uniprot -query larva_top_20_contigs -outfmt '6 qseqid sacc pident length evalue' -evalue 1e-10 -num_threads 5 > adult.larva_larva
+
+#####both#####
+ 
+1. grep -w -A1 -f adult.larva.merged_adult.larva_top20 good.unique_headers_adult.larva.centroid.trinity.fasta > adult.larva_top_20_contigs
+
+2. blastx -db uniprot -query adult.larva_top_20_contigs -outfmt '6 qseqid sacc pident length evalue' -evalue 1e-10 -num_threads 5 > adult.larva_both
+
+**Some of the contigs didn't hit to UniProt database**
