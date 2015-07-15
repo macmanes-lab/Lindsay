@@ -452,3 +452,17 @@ Search for something that begins w/ >, if you see it print that and 0, 1, 2, 3, 
 2. blastx -db uniprot -query adult.larva_top_20_contigs -outfmt '6 qseqid sacc pident length evalue' -evalue 1e-10 -num_threads 5 > adult.larva_both
 
 **Some of the contigs didn't hit to UniProt database**
+
+##Counting # of transcripts 
+1. In excel
+2. =IF(D2=0,0,1)
+3. Sum function
+4. Larva has 85194 transcrtipts 
+5. Adult has 94413 transcripts
+
+#####Finding amount in common
+1. In excel 
+2. =(IF(AND(D2=1,F2=1),1,0))
+3. Number in common 63950
+4. Adult has 63950 unique
+5. Larva has 21243 unique
