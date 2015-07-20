@@ -457,7 +457,7 @@ Search for something that begins w/ >, if you see it print that and 0, 1, 2, 3, 
 1. In excel
 2. =IF(D2=0,0,1)
 3. Sum function
-4. Larva has 85194 transcrtipts 
+4. Larva has 85194 transcripts 
 5. Adult has 94413 transcripts
 
 #####Finding amount in common
@@ -466,3 +466,83 @@ Search for something that begins w/ >, if you see it print that and 0, 1, 2, 3, 
 3. Number in common 63950
 4. Adult has 63950 unique
 5. Larva has 21243 unique
+
+
+##Mapping each tissue's reads back to vsearch, transrate assembly using bwa-mem
+**WD:/mnt/data3/lah/transcriptome_work/bwa/adult**
+**WD:/mnt/data3/lah/transcriptome_work/bwa/larva** 
+
+1. ln -s /mnt/data3/lah/transcriptome_work/transrate/vsearch_transrate/good.unique_headers_adult.larva.centroid.trinity.fasta
+2. ln -s individual corrected reads from: /mnt/data3/lah/transcriptome_work/kallisto/
+3. bwa index good.unique_headers_adult.larva.centroid.trinity.fasta
+
+**adult**
+
+1. bwa mem -t 5 ../good.unique_headers_adult.larva.centroid.trinity.fasta no.trimmed.adult.1.corrected.fastq no.trimmed.adult.2.corrected.fastq > adult.sam
+
+**larva**
+
+1.bwa mem -t 5 ../good.unique_headers_adult.larva.centroid.trinity.fasta no.trimmed.larva.1.corrected.fastq no.trimmed.larva.2.corrected.fastq > larva.sam
+
+#BUSCO on both Transrate and Vsearched merged assemblies
+**WD:/mnt/data3/lah/busco**
+
+####Vsearch####
+1. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonoia.transcriptome.vsearch.eukaryota.busco -in good.unique_headers_adult.larva.centroid.trinity.fasta -l eukaryota/
+
+		Total running time:   3259.058395385742 seconds
+		Total complete BUSCOs found in assembly (<2 sigma) :  108       (233 duplicated).
+		Total BUSCOs partially recovered (>2 sigma) :  17
+		Total groups searched: 429
+		Total BUSCOs not found:  71
+		
+		Summarized benchmarks in BUSCO notation:
+		
+		C:79%[D:54%],F:3.9%,M:16%,n:429
+
+		Representing:
+				341	Complete Single-Copy BUSCOs
+				233	Complete Duplicated BUSCOs
+				17	Fragmented BUSCOs
+				71	Missing BUSCOs
+				429	Total BUSCO groups searched
+
+2. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonoia.transcriptome.vsearch.arthropoda.busco -in good.unique_headers_adult.larva.centroid.trinity.fasta -l arthropoda/
+
+		Summarized benchmarks in BUSCO notation:
+		C:81%[D:54%],F:11%,M:7.5%,n:2675
+
+		Representing:
+			2170	Complete Single-Copy BUSCOs
+			1465	Complete Duplicated BUSCOs
+			304	Fragmented BUSCOs
+			201	Missing BUSCOs
+			2675	Total BUSCO groups searched
+
+
+
+####Transrate####
+1. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonia.transcriptome.transrate.eukaryota.busco -in good.merge.fasta -l eukaryota/		
+				
+				Summarized benchmarks in BUSCO notation:
+			C:79%[D:73%],F:3.9%,M:16%,n:429
+
+			Representing:
+				341	Complete Single-Copy BUSCOs
+				314	Complete Duplicated BUSCOs
+				17	Fragmented BUSCOs
+				71	Missing BUSCOs
+				429	Total BUSCO groups searched
+				
+ 2. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonia.transcriptome.transrate.arthropoda.busco -in good.merge.fasta -l arthropoda/
+ 
+ 			
+ 		Summarized benchmarks in BUSCO notation:
+			C:81%[D:74%],F:11%,M:7.2%,n:2675
+
+		Representing:
+			2182	Complete Single-Copy BUSCOs
+			1991	Complete Duplicated BUSCOs
+			300	Fragmented BUSCOs
+			193	Missing BUSCOs
+			2675	Total BUSCO groups searched		
