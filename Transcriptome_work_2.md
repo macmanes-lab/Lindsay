@@ -1,17 +1,18 @@
 ##Getting more data
-What is unique to these unique transcripts
+####What is unique to these unique transcripts
 
-1. Kallisto
-2. TMP average > 1
-3. Blast w/ uniprot
-4. Panther w/ these blast results
-5. Put unique IDs and put them into panther
-6. Transdecoder ORF's (% or number) - gives you proteins
-7. 		w/in transdecoder--The number of transcripts that have a hit to pfam database
-7.		 w/in transdecoder-- Pfam 
-8. Dryad- assembled contigs, pfam
-9. make a plot of count vs. TMP from filtered
-10. make plot expression adult vs. expression larva from filtered (potentially interesting)
+######1. Kallisto
+######2. TMP average > 1
+######3. Blast w/ uniprot
+######4. Panther w/ these blast results
+######5. Put unique IDs and put them into panther
+######6. Transdecoder ORF's (% or number) - gives you proteins
+	
+		w/in transdecoder--The number of transcripts that have a hit to pfam database
+		w/in transdecoder-- Pfam 
+######8. Dryad- assembled contigs, pfam
+######9. make a plot of count vs. TMP from filtered
+######10. make plot expression adult vs. expression larva from filtered (potentially interesting)
 
 
 ##Transdecoder on vsearch and transrate edited merged file
