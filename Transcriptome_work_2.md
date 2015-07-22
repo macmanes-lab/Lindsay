@@ -58,6 +58,8 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 ##Filtering kallisto reads from adult.larva_adult and adult.larva_larva for TMP average > 1 
 **WD/mnt/data3/lah/transcriptome_work/kallisto/blast**
 
+**Excel - filtered_kallisto_greater_than_1.xlsx in Lindsay folder**
+
 1. find average tpm from kallisto
 2. =IF(G3>1, 1,0)
 3. Sort by column
@@ -68,7 +70,7 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 
 ##Blasting all transcripts from adult and larva kallisto that have a tpm >1
 
-1. Do in excel
+1. **Do in excel- filtered_kallisto_greater_than_1.xlsx in Lindsay folder**
 2. nano all_adult_transcripts_1+
 3. nano all_larva_transcripts_1+
 4. grep -w -A1 -f all_adult_transcripts_1+ ../good.unique_headers_adult.larva.centroid.trinity.fasta > filtered_kallisto_hits_adult
