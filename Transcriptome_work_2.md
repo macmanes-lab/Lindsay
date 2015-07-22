@@ -77,29 +77,11 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 ##Transrate on merged files to check that vsearch is in fact the best
 1. transrate -a transrate.merged.good.fasta,good.unique_headers_adult.larva.centroid.trinity.fasta -l adult.larva.1.corrected.fastq -r adult.larva.2.corrected.fastq
 
-**Tranrate merged**
-
-	Contig metrics:
-	[ INFO] 2015-07-21 10:14:01 : -----------------------------------
-	[ INFO] 2015-07-21 10:14:01 : n seqs                       122298
-	[ INFO] 2015-07-21 10:14:01 : smallest                        200
-	[ INFO] 2015-07-21 10:14:01 : largest                       21577
-	[ INFO] 2015-07-21 10:14:01 : n bases                   115369262
-	[ INFO] 2015-07-21 10:14:01 : mean len                     943.35
-	[ INFO] 2015-07-21 10:14:01 : n under 200                       0
-	[ INFO] 2015-07-21 10:14:01 : n over 1k                     33989
-	[ INFO] 2015-07-21 10:14:01 : n over 10k                       96
-	[ INFO] 2015-07-21 10:14:01 : n with orf                    34938
-	[ INFO] 2015-07-21 10:14:01 : mean orf percent               57.5
-	[ INFO] 2015-07-21 10:14:01 : n90                             332
-	[ INFO] 2015-07-21 10:14:01 : n70                             966
-	[ INFO] 2015-07-21 10:14:01 : n50                            1843
-	[ INFO] 2015-07-21 10:14:01 : n30                            2935
-	[ INFO] 2015-07-21 10:14:01 : n10                            5079
-	[ INFO] 2015-07-21 10:14:01 : gc                             0.36
-	[ INFO] 2015-07-21 10:14:01 : gc skew                         0.0
-	[ INFO] 2015-07-21 10:14:01 : at skew                         0.0
-	[ INFO] 2015-07-21 10:14:01 : cpg ratio                      1.65
-	[ INFO] 2015-07-21 10:14:01 : bases n                           0
-	[ INFO] 2015-07-21 10:14:01 : proportion n                    0.0
-	[ INFO] 2015-07-21 10:14:01 : linguistic complexity          0.16
+*vsearch is better, or at least not worse. The original score was highter, there were more reads mapped back initially and the optimal score is a little better.**
+		
+		Transrate % mapped - 91.6%
+		Vsearch % mapped - 93.3
+		Transrate score - .292
+		Vsearch score - .305 
+		Transrate optimal - .310
+		Vsearch score - .319
