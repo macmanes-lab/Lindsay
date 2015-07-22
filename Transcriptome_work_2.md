@@ -32,8 +32,23 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 1. hmmpress Pfam-A.hmm
 2. hmmscan --cpu 8 --domtblout vsearch_merged.pfam.domtblout Pfam-A.hmm longest_orfs.pep
 
+		Internal pipeline statistics summary:
+		-------------------------------------
+		Query sequence(s):                         1  (99 residues searched)
+		Target model(s):                       16230  (2852355 nodes)
+		Passed MSV filter:                      1189  (0.0732594); expected 324.6 (0.02)
+		Passed bias filter:                      411  (0.0253235); expected 324.6 (0.02)
+		Passed Vit filter:                        95  (0.00585336); expected 16.2 (0.001)
+		Passed Fwd filter:                        17  (0.00104744); expected 0.2 (1e-05)
+		Initial search space (Z):              16230  [actual number of targets]
+		Domain search space  (domZ):               0  [number of targets reported over threshold]
+
+
+
 *Step 3 - blastp*
-w/ uniprot and longest_orfs -max_target_seqs 1 -outfmt 6 -evalue 1e-10 -num_threads 10 
+
+1. makeblastdb -in uniprot_sprot.fasta -out uniprot -dbtype prot
+2. blastp -db uniprot -query longest_orfs.pep -max_target_seqs 1 -outfmt 6 -evalue 1e-10 -num_threads 5 > adult.larva.blastp
 
 *Step 4- TransDecoder predict*
 /share/TransDecoder/TransDecoder.Predict -t good.unique_headers_adult.larva.centroid.trinity.fasta --retain_long_orfs 300 --retain_pfam_hits vsearch_merged.pfam.domtblout --retain_blastp_hits OUTPUT --cpu 12
