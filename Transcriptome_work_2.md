@@ -51,7 +51,8 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 2. blastp -db uniprot -query longest_orfs.pep -max_target_seqs 1 -outfmt 6 -evalue 1e-10 -num_threads 5 > adult.larva.blastp
 
 *Step 4- TransDecoder predict*
-/share/TransDecoder/TransDecoder.Predict -t good.unique_headers_adult.larva.centroid.trinity.fasta --retain_long_orfs 300 --retain_pfam_hits vsearch_merged.pfam.domtblout --retain_blastp_hits OUTPUT --cpu 12
+
+1. /share/TransDecoder/TransDecoder.Predict -t good.unique_headers_adult.larva.centroid.trinity.fasta --retain_long_orfs 300 --retain_pfam_hits vsearch_merged.pfam.domtblout --retain_blastp_hits adult.larva.blastp --cpu 5
 
 
 
@@ -68,13 +69,23 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 4. tmux new -s grep
 5. grep -w -A1 -f merged_transcripts_average_kallisto_tmp_1+ ../good.unique_headers_adult.larva.centroid.trinity.fasta > filtered_kallisto_hits
 
-##Blasting all transcripts from adult and larva kallisto that have a tpm >1
+
+##grabbing all transcripts from adult and larva kallisto that have a tpm >1
 
 1. **Do in excel- filtered_kallisto_greater_than_1.xlsx in Lindsay folder**
 2. nano all_adult_transcripts_1+
 3. nano all_larva_transcripts_1+
 4. grep -w -A1 -f all_adult_transcripts_1+ ../good.unique_headers_adult.larva.centroid.trinity.fasta > filtered_kallisto_hits_adult
 5. grep -w -A1 -f all_larva_transcripts_1+ ../good.unique_headers_adult.larva.centroid.trinity.fasta > filtered_kallisto_hits_larva
+
+##blasting all transcripts that have a kallisto tpm >1
+
+**WD/mnt/data3/lah/transcriptome_work/kallisto/blast**
+
+*all*
+
+1. blastx -db uniprot -query filtered_kallisto_hits -max_target_seqs 1 -outfmt 6 -evalue 1e-10 -num_threads 5 > filtered_kallisto_hits_blast
+
 
 ##Transrate on merged files to check that vsearch is in fact the best
 1. transrate -a transrate.merged.good.fasta,good.unique_headers_adult.larva.centroid.trinity.fasta -l adult.larva.1.corrected.fastq -r adult.larva.2.corrected.fastq
@@ -87,3 +98,14 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 		Vsearch score - .305 
 		Transrate optimal - .310
 		Vsearch score - .319
+		
+		
+##Figuring out what the transcripts that are highly expressed in adult or larva but not both are. 	
+**Excel ncbi_blast**
+
+1. Sort by tmp column adult or larva
+2. Copy transcipt ID 
+3. Grab them from merged kallisto file
+	A. grep -w -A1 -f ncbi_blast good.unique_headers_adult.larva.centroid.trinity.fasta > ncbi_blast_contigs
+4. give file to ncbi blast 
+5. blastn 	
