@@ -98,7 +98,7 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 3. Find sp| and replace with nothing
 4. In the next column run =LEFT(F1,FIND("|",F1)-1)
 5. Copy this column (only the uniprot ID to new file) paste special, values
-6. 
+6. filtered_kallisto_hits_panther.txt
 ##Transrate on merged files to check that vsearch is in fact the best
 1. transrate -a transrate.merged.good.fasta,good.unique_headers_adult.larva.centroid.trinity.fasta -l adult.larva.1.corrected.fastq -r adult.larva.2.corrected.fastq
 
