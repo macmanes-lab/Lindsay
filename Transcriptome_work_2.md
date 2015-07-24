@@ -78,15 +78,27 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 4. grep -w -A1 -f all_adult_transcripts_1+ ../good.unique_headers_adult.larva.centroid.trinity.fasta > filtered_kallisto_hits_adult
 5. grep -w -A1 -f all_larva_transcripts_1+ ../good.unique_headers_adult.larva.centroid.trinity.fasta > filtered_kallisto_hits_larva
 
-##blasting all transcripts that have a kallisto tpm >1
+##blasting all transcripts that have an average kallisto tpm >1
 
 **WD/mnt/data3/lah/transcriptome_work/kallisto/blast**
 
 *all*
 
 1. blastx -db uniprot -query filtered_kallisto_hits -max_target_seqs 1 -outfmt 6 -evalue 1e-10 -num_threads 5 > filtered_kallisto_hits_blast
+		
+			20779 hits for 34285 contigs
 
 
+##Panther on the blast results of all transcripts that have an average kallisto tpm >1 
+ **Do in excel- filtered_kallisto_greater_than_1.xlsx in Lindsay folder**
+*all*
+
+1. Copy column 2 (upiprot headers)	
+2. Paste into new column
+3. Find sp| and replace with nothing
+4. In the next column run =LEFT(F1,FIND("|",F1)-1)
+5. Copy this column (only the uniprot ID to new file) paste special, values
+6. 
 ##Transrate on merged files to check that vsearch is in fact the best
 1. transrate -a transrate.merged.good.fasta,good.unique_headers_adult.larva.centroid.trinity.fasta -l adult.larva.1.corrected.fastq -r adult.larva.2.corrected.fastq
 
