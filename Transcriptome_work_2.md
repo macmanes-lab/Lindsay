@@ -119,5 +119,7 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 2. Copy transcipt ID 
 3. Grab them from merged kallisto file
 	A. grep -w -A1 -f ncbi_blast good.unique_headers_adult.larva.centroid.trinity.fasta > ncbi_blast_contigs
+	
+			NOTE: This didn't work bc it sorts contigs alphabetically. 
 4. give file to ncbi blast 
 5. blastn 	
