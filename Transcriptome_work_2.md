@@ -43,6 +43,9 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 		Initial search space (Z):              16230  [actual number of targets]
 		Domain search space  (domZ):               0  [number of targets reported over threshold]
 
+3. grep ">" longest_orfs.pep | wc -l
+
+		27320
 
 
 *Step 3 - blastp*
