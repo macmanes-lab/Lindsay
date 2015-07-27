@@ -82,6 +82,7 @@
 *run it*
 
 5. make -f nanocorrect-overlap.make INPUT=../nanopore.all.fa NAME=corrected
+6. python nanocorrect.py corrected all > corrected.fasta
 
 	
 					
