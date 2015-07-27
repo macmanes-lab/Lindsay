@@ -90,7 +90,17 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 1. blastx -db uniprot -query filtered_kallisto_hits -max_target_seqs 1 -outfmt 6 -evalue 1e-10 -num_threads 5 > filtered_kallisto_hits_blast
 		
 			20779 hits for 34285 contigs
+2. Grabbing unique ones:
+ 			
+ 			 cat filtered_kallisto_hits_blast | awk '{print$2}' | sort | uniq > unique_filtered_kallisto_hits_blast
 
+*adult*
+
+1. blastx -db uniprot -query filtered_kallisto_hits_adult -max_target_seqs 1 -outfmt 6 -evalue 1e-10 -num_threads 5 > filtered_kallisto_hits_blast_adult
+
+*larva*
+
+1. blastx -db uniprot -query filtered_kallisto_hits_larva -max_target_seqs 1 -outfmt 6 -evalue 1e-10 -num_threads 5 > filtered_kallisto_hits_blast_larva
 
 ##Panther on the blast results of all transcripts that have an average kallisto tpm >1 
  **Do in excel- filtered_kallisto_greater_than_1.xlsx in Lindsay folder**
