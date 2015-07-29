@@ -16,6 +16,19 @@
 ######11. retransrate good assemblies
 
 
+##Counting number of reads loss with bless
+1. grep "@HWI" harmonia_adult.R1.fastq | wc -l
+
+		58000821
+2. grep "@HWI" harmonia_adult.R2.fastq | wc -l 
+
+		58000821
+		
+3. more both.fa.read_count
+
+		115999771		
+
+		
 ##Transdecoder on vsearch and transrate edited merged file
 **WD: /mnt/data3/lah/transcriptome_work/transdecoder**
 
@@ -157,11 +170,12 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 5. blastn
 
 ##Double checking kallisto filtered grabbed only important ones b/c in panther everything looks the same  	
-**WD: /mnt/data3/lah/transcriptome_work/kallisto/blast/filtered_greater_than_0**
+**WD: /mnt/data3/lah/transcriptome_work/kallisto/blast/filtered_greater_than_0/adult**
+**WD: /mnt/data3/lah/transcriptome_work/kallisto/blast/filtered_greater_than_0/larva**
 **Excel: /Users/lindsayhavens/Documents/Science/papers I wrote/transcriptome paper/filtered_kallisto/filtered_kallisto_greater_than_1.xlsx**
 
 1. grep -w -A1 -f adult_greater_than_0.1 good.unique_headers_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_1
 2. grep -w -A1 -f adult_greater_than_0.2 good.unique_headers_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_2
 3. grep -w -A1 -f adult_greater_than_0.4 good.unique_hs_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_3
 3. grep -w -A1 -f adult_greater_than_0.5 good.unique_headers_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_4
-4. etc 
+4. etc and then same for larva
