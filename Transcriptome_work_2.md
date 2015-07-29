@@ -158,7 +158,7 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 
 ##Double checking kallisto filtered grabbed only important ones b/c in panther everything looks the same  	
 **WD: /mnt/data3/lah/transcriptome_work/kallisto/blast/filtered_greater_than_0**
-**Excel: /Users/lindsayhavens/Documents/Science/Computer/Lindsay/filtered_kallisto/filtered_kallisto_greater_than_1.xlsx**
+**Excel: /Users/lindsayhavens/Documents/Science/papers I wrote/transcriptome paper/filtered_kallisto/filtered_kallisto_greater_than_1.xlsx**
 
 1. grep -w -A1 -f adult_greater_than_0.1 good.unique_headers_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_1
 2. grep -w -A1 -f adult_greater_than_0.2 good.unique_headers_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_2
