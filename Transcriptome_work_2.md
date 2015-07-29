@@ -76,7 +76,7 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 ##grabbing all transcripts from adult and larva kallisto that have a tpm >1
 
 1. **Do in excel- filtered_kallisto_greater_than_1.xlsx in Lindsay folder**
-2. nano all_adult_transcripts_1+
+2. nano all_adult_transcripts_1+ (32346)
 3. nano all_larva_transcripts_1+
 4. grep -w -A1 -f all_adult_transcripts_1+ ../good.unique_headers_adult.larva.centroid.trinity.fasta > filtered_kallisto_hits_adult
 5. grep -w -A1 -f all_larva_transcripts_1+ ../good.unique_headers_adult.larva.centroid.trinity.fasta > filtered_kallisto_hits_larva
@@ -92,18 +92,34 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 			20779 hits for 34285 contigs
 2. Grabbing unique ones:
  			
- 			 cat filtered_kallisto_hits_blast | awk '{print$2}' | sort | uniq > unique_filtered_kallisto_hits_blast
+ 			 sort -uk1,1 filtered_kallisto_hits_blast > unique_filtered_kallisto_hits_blast
+ 			 
+ 			
+ 			 16420
 
 *adult*
 
 1. blastx -db uniprot -query filtered_kallisto_hits_adult -max_target_seqs 1 -outfmt 6 -evalue 1e-10 -num_threads 5 > filtered_kallisto_hits_blast_adult
+2. Grabbing unique ones:
+
+			sort -uk1,1 filtered_kallisto_hits_blast_adult > unique_filtered_kallisto_hits_adult
+	
+			24560
 
 *larva*
 
 1. blastx -db uniprot -query filtered_kallisto_hits_larva -max_target_seqs 1 -outfmt 6 -evalue 1e-10 -num_threads 5 > filtered_kallisto_hits_blast_larva
+2. Grabbing unique ones:
+
+			sort -uk1,1 filtered_kallisto_hits_blast_larva > unique_filtered_kallisto_hits_larva
+				
+			24560	
 
 ##Panther on the blast results of all transcripts that have an average kallisto tpm >1 
  **Do in excel- filtered_kallisto_greater_than_1.xlsx in Lindsay folder**
+ 
+ **/Users/lindsayhavens/Documents/Science/papers I wrote/transcriptome paper/panther results/panther_results**
+ 
 *all*
 
 1. Copy column 2 (upiprot headers)	
@@ -111,7 +127,10 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 3. Find sp| and replace with nothing
 4. In the next column run =LEFT(F1,FIND("|",F1)-1)
 5. Copy this column (only the uniprot ID to new file) paste special, values
-6. filtered_kallisto_hits_panther.txt
+6. pantherGeneList_filtered>1_adult.txt
+7. pantherGeneList_filtered>1_combined.txt
+8. pantherGeneList_filtered>1_larva.txt
+
 ##Transrate on merged files to check that vsearch is in fact the best
 1. transrate -a transrate.merged.good.fasta,good.unique_headers_adult.larva.centroid.trinity.fasta -l adult.larva.1.corrected.fastq -r adult.larva.2.corrected.fastq
 
@@ -135,4 +154,14 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 	
 			NOTE: This didn't work bc it sorts contigs alphabetically. 
 4. give file to ncbi blast 
-5. blastn 	
+5. blastn
+
+##Double checking kallisto filtered grabbed only important ones b/c in panther everything looks the same  	
+**WD: /mnt/data3/lah/transcriptome_work/kallisto/blast/filtered_greater_than_0**
+**Excel: /Users/lindsayhavens/Documents/Science/Computer/Lindsay/filtered_kallisto/filtered_kallisto_greater_than_1.xlsx**
+
+1. grep -w -A1 -f adult_greater_than_0.1 good.unique_headers_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_1
+2. grep -w -A1 -f adult_greater_than_0.2 good.unique_headers_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_2
+3. grep -w -A1 -f adult_greater_than_0.4 good.unique_hs_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_3
+3. grep -w -A1 -f adult_greater_than_0.5 good.unique_headers_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_4
+4. etc 
