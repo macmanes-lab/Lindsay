@@ -141,7 +141,7 @@ WD: /mnt/data3/lah/nanopore/spades
 
 1. tmux new -s spades
 
-		spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected_LR.fq -t 10 -m 500 -o harmonia.nanopore.spades --careful --only-assembler
+		spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected_LR.fq -t 10 -m 500 -o harmonia.nanopore2.spades --careful --only-assembler
 
 2. tmux at -t spades
 3. K77 didn't work

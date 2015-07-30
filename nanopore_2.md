@@ -84,5 +84,12 @@
 5. make -f nanocorrect-overlap.make INPUT=../nanopore.all.fa NAME=corrected
 6. python nanocorrect.py corrected all > corrected.fasta
 
+##SPades 1st
+
+**WD: /mnt/data3/lah/nanopore/nanocorrect**
+
+1. spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected.fasta -t 8 -m 500 -o harmonia.nanopore2.spades --careful --only-assembler
+
+
 	
 					

@@ -175,7 +175,10 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 **Excel: /Users/lindsayhavens/Documents/Science/papers I wrote/transcriptome paper/filtered_kallisto/filtered_kallisto_greater_than_1.xlsx**
 
 1. grep -w -A1 -f adult_greater_than_0.1 good.unique_headers_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_1
-2. grep -w -A1 -f adult_greater_than_0.2 good.unique_headers_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_2
+
+
+2
+. grep -w -A1 -f adult_greater_than_0.2 good.unique_headers_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_2
 3. grep -w -A1 -f adult_greater_than_0.4 good.unique_hs_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_3
 3. grep -w -A1 -f adult_greater_than_0.5 good.unique_headers_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_4
 4. etc and then same for larva
@@ -190,3 +193,25 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 
 3. cat larva_greater_than_1_contigs_* > concatenated_contigs_larva
 4. blastx -db ../uniprot -query concatenated_contigs_larva -max_target_seqs 1 -outfmt 6 -evalue 1e-10 -num_threads 5 > concatenated_contigs_larva_blast
+
+
+		Something didn't work w/ grep
+		
+		
+##Try grep a different way...with a for loop
+**/mnt/data3/lah/transcriptome_work/kallisto/blast/filtered_greater_than_0/adult/transcripts**
+
+1. for i in `cat adult_greater_than_0.1`; do  grep --max-count=1 -A1 -w $i good.unique_headers_adult.larva.centroid.trinity.fasta >> 1.fasta; done &
+2. for i in `cat adult_greater_than_0.2`; do  grep --max-count=1 -A1 -w $i good.unique_headers_adult.larva.centroid.trinity.fasta >> 2.fasta; done &
+3. for i in `cat adult_greater_than_0.3`; do  grep --max-count=1 -A1 -w $i good.unique_headers_adult.larva.centroid.trinity.fasta >> 3.fasta; done &
+4. for i in `cat adult_greater_than_0.4`; do  grep --max-count=1 -A1 -w $i good.unique_headers_adult.larva.centroid.trinity.fasta >> 4.fasta; done &
+5. for i in `cat adult_greater_than_0.5`; do  grep --max-count=1 -A1 -w $i good.unique_headers_adult.larva.centroid.trinity.fasta >> 5.fasta; done &	
+		
+			Same problem as before...only grabbing 1 transcript ID
+			
+ 
+1. grep -w -A1 -f transcripts_adult good.unique_headers_adult.larva.centroid.trinity.fasta > test1
+
+ grep -w -A1 -f transcripts_adult good.unique_headers_ad
+ult.larva.centroid.trinity.fasta > test1  	
+		
