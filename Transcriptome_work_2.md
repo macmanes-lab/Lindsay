@@ -179,3 +179,14 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 3. grep -w -A1 -f adult_greater_than_0.4 good.unique_hs_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_3
 3. grep -w -A1 -f adult_greater_than_0.5 good.unique_headers_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_4
 4. etc and then same for larva
+
+##Concatenate contig files into one file and then blastx w/ uniprot data
+*adult*
+
+1. cat * > concatenated_contigs_adult
+2. blastx -db ../uniprot -query concatenated_contigs_adult -max_target_seqs 1 -outfmt 6 -evalue 1e-10 -num_threads 5 > concatenated_contigs_adult_blast
+
+*larva*
+
+3. cat larva_greater_than_1_contigs_* > concatenated_contigs_larva
+4. blastx -db ../uniprot -query concatenated_contigs_larva -max_target_seqs 1 -outfmt 6 -evalue 1e-10 -num_threads 5 > concatenated_contigs_larva_blast
