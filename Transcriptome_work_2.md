@@ -96,7 +96,7 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 
 ##blasting all transcripts that have an average kallisto tpm >1
 
-**WD/mnt/data3/lah/transcriptome_work/kallisto/blast**
+**WD/mnt/data3/lah/transcriptome_work/kallisto/blast/1st_attempt**
 
 *all*
 
@@ -209,9 +209,17 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 		
 			Same problem as before...only grabbing 1 transcript ID
 			
+**WD: /mnt/data3/lah/transcriptome_work/kallisto/blast**
  
 1. grep -w -A1 -f transcripts_adult good.unique_headers_adult.larva.centroid.trinity.fasta > test1
 
- grep -w -A1 -f transcripts_adult good.unique_headers_ad
-ult.larva.centroid.trinity.fasta > test1  	
-		
+2. grep -w -A1 -f transcripts_adult good.unique_headers_ad
+ult.larva.centroid.trinity.fasta > test1  
+
+##blastx
+**WD: /mnt/data3/lah/transcriptome_work/kallisto/blast**
+
+1.  blastx -db uniprot -query adult_contigs -outfmt 6 -evalue 1e-10 -num_threads 5 > adult_greater_than_0 &
+2.   blastx -db uniprot -query larva_contigs -outfmt 6 -evalue 1e-10 -num_threads 5 > larva_greater_than_0 &	
+	
+	
