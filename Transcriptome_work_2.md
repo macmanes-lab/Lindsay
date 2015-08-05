@@ -177,8 +177,7 @@ Output- good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder_dir/
 1. grep -w -A1 -f adult_greater_than_0.1 good.unique_headers_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_1
 
 
-2
-. grep -w -A1 -f adult_greater_than_0.2 good.unique_headers_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_2
+2. grep -w -A1 -f adult_greater_than_0.2 good.unique_headers_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_2
 3. grep -w -A1 -f adult_greater_than_0.4 good.unique_hs_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_3
 3. grep -w -A1 -f adult_greater_than_0.5 good.unique_headers_adult.larva.centroid.trinity.fasta > adult_greater_than_1_contigs_4
 4. etc and then same for larva
@@ -220,6 +219,19 @@ ult.larva.centroid.trinity.fasta > test1
 **WD: /mnt/data3/lah/transcriptome_work/kallisto/blast**
 
 1.  blastx -db uniprot -query adult_contigs -outfmt 6 -evalue 1e-10 -num_threads 5 > adult_greater_than_0 &
-2.   blastx -db uniprot -query larva_contigs -outfmt 6 -evalue 1e-10 -num_threads 5 > larva_greater_than_0 &	
-	
+
+		
+2. blastx -db uniprot -query larva_contigs -outfmt 6 -evalue 1e-10 -num_threads 5 > larva_greater_than_0 &	
+3. Find unique ones: sort -uk1,1 adult_greater_than_0 > unique_adult_greater_than_0
+
+			15880
+4. Find unique ones: sort -uk1,1 larva_greater_than_0 > unique_larva_greater_than_0
+
+			15407
+
+
+##Panther
+**Excel: /Users/lindsayhavens/Documents/Science/papers I wrote/transcriptome paper/filtered_kallisto/8.5.15/unique_adult_larva_greater_than_0**
+ 
+The pie charts look the same, but they are from different datasets as evident by the number of sequences they looked at. 	
 	
