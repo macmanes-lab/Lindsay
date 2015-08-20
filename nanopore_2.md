@@ -108,6 +108,7 @@
 1. more nanopore.harmonia.fastq | awk '{if(NR%4==1) {printf(">%s\n",substr($0,2));} else if(NR%4==2) print;}' > nanopore.harmonia.fasta 
 
 1. make -f nanocorrect-overlap.make INPUT=nanopore.harmonia.fasta NAME=corrected 
+2. python nanocorrect.py corrected all > corrected.fasta
 
 		
 
