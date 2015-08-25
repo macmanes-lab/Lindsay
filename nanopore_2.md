@@ -110,6 +110,10 @@
 1. make -f nanocorrect-overlap.make INPUT=nanopore.harmonia.fasta NAME=corrected 
 2. python nanocorrect.py corrected all > corrected.fasta
 
+##Spades
+1. spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected.fasta -t 8 -m 500 -o harmonia.nanopore2.spades --careful --only-assembler
+
+
 		
 
 
