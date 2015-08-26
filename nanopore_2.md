@@ -123,9 +123,11 @@
 **WD:/mnt/data3/lah/nanopore/wgs_new**
 1. fastaToCA -l new_nanopore_corrected -s corrected.fasta -q corrected.fasta > new_nanopore_corrected.frg				
 
-##wgs
+##wgs--will have both nanopore data and illuminia super-reads 
 
 /share/wgs-assembler/Linux-amd64/bin/runCA
+
+1. /share/wgs-assembler/Linux-amd64/bin/runCA -d temp_dir -p harmonia.nanopore.2 -s
 
 
 	
