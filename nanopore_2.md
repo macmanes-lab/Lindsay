@@ -114,8 +114,18 @@
 1. spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected.fasta -t 8 -m 500 -o harmonia.nanopore2.spades --careful --only-assembler
 
 
-		
+#fastqToCA
+1. fastqToCA -libraryname new.nanopore -technology pacbio-raw-type sanger -reads nanopore.all.fastq > nanopore_new.frg
 
+		But these aren't corrected.
+
+#fastaToCA
+**WD:/mnt/data3/lah/nanopore/wgs_new**
+1. fastaToCA -l new_nanopore_corrected -s corrected.fasta -q corrected.fasta > new_nanopore_corrected.frg				
+
+##wgs
+
+/share/wgs-assembler/Linux-amd64/bin/runCA
 
 
 	
