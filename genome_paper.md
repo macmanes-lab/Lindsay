@@ -63,5 +63,13 @@
 5. fastaToCA -l nanocorrect2 -s nanocorrect2.fasta -q nanocorrect2.fasta > nanocorrect2.frg	
 6. /share/MaSuRCA-3.1.0beta/bin/masurca congfig.file.txt
 7. ./assemble.sh
+8. Convert superReadSequences.fasta to fastq
+
+		python /share/ectools/fastaToFastq.py superReadSequences.fasta > superReadSequences.fastq
+9. Convert fastq to .frg
+	 	
+	 	fastqToCA -libraryname superreads -type illumina -reads superReadSequences.fastq > superReadSequences.frg
 
 ##Throw super-reads as well as the nanopore data into wgs
+**WD: /mnt/data3/lah/genome_paper/wgs**
+1. runCA -d wgs1 -p harmonia -s spec_file
