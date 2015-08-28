@@ -1,0 +1,22 @@
+merSize=16
+merylThreads = 10
+merylMemory = 32000
+frgCorrBatchSize = 100000
+ovlHashBlockLength = 180000000
+ovlCorrConcurrency = 10
+ovlConcurrency = 10
+ovlHashBits=25
+ovlHashBlockLength=180000000
+ovlThreads = 5
+ovlRefBlockSize = 1000000
+ovlCorrBatchSize = 100000
+ovlStoreMemory = 219362
+mbtConcurrency = 2
+frgCorrThreads = 10
+frgCorrConcurrency = 1
+cnsConcurrency = 10
+batThreads = 10
+batMemory = 250
+superReadSequences.frg
+nanocorrect.frg
+nanocorrect2.frg

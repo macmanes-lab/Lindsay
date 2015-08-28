@@ -58,9 +58,15 @@
 		
 1. ln -s /mnt/data3/lah/nanopore/nanocorrect/nanocorrect.fasta
 2. ln -s /mnt/data3/lah/nanopore/nanocorrect2/nanocorrect2.fasta
-3. Have to convert these to CA
-4. fastaToCA -l nanocorrect -s nanocorrect.fasta -q nanocorrect.fasta > nanocorrect.frg 
-5. fastaToCA -l nanocorrect2 -s nanocorrect2.fasta -q nanocorrect2.fasta > nanocorrect2.frg	
+3. Have to convert these to fastq
+
+			python /share/ectools/fastaToFastq.py nanocorrect.fasta > nanocorrect.fastq
+			python /share/ectools/fastaToFastq.py nanocorrect2.fasta > nanocorrect2.fastq
+
+*convert to CA*
+			
+4. fastqToCA -libraryname nanocorrect -technology pacbio-corrected -reads nanocorrect.fastq > nanocorrect_real.frg
+5. ffastqToCA -libraryname nanocorrect -technology pacbio-corrected -reads nanocorrect2.fastq > nanocorrect2_real.frg	
 6. /share/MaSuRCA-3.1.0beta/bin/masurca congfig.file.txt
 7. ./assemble.sh
 8. Convert superReadSequences.fasta to fastq
@@ -68,7 +74,7 @@
 		python /share/ectools/fastaToFastq.py superReadSequences.fasta > superReadSequences.fastq
 9. Convert fastq to .frg
 	 	
-	 	fastqToCA -libraryname superreads -type illumina -reads superReadSequences.fastq > superReadSequences.frg
+	 	fastqToCA -libraryname superreads -technology sanger -reads superReadSequences.fastq > superReadSequences_real.frg
 
 ##Throw super-reads as well as the nanopore data into wgs
 **WD: /mnt/data3/lah/genome_paper/wgs**
