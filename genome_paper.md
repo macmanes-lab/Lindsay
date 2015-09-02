@@ -78,4 +78,21 @@
 
 ##Throw super-reads as well as the nanopore data into wgs
 **WD: /mnt/data3/lah/genome_paper/wgs**
-1. runCA -d wgs1 -p harmonia -s spec_file
+
+			http://wgs-assembler.sourceforge.net/wiki/index.php/FASTA_Files
+			
+			
+1. runCA -d wgs_real2 -p harmonia -s spec_file
+
+	The Cleaner has arrived.  Doing 'none'.
+	
+	N50ScaffoldBases=4151 (found using /mnt/data3/lah/genome_paper/wgs/wgs_first/9-terminator/harmonia.qc)
+2. Scaffold fasta file- harmonia.scf.fasta
+3. Contig fasta file- harmonia.ctg.fasta
+
+##BUSCO on harmonia.scf.fasta file
+**WD:/mnt/data3/lah/busco**
+
+*eukaryota*
+
+2. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonoia.wgs.eukaryota -in harmonia.scf.fasta -l eukaryota/
