@@ -92,6 +92,7 @@
 
 ##re-run with kmer size 22
 1. runCA -d wgs_2nd -p harmonia -s spec_file_2
+2. N50ScaffoldBases=4175
 
 
 ##BUSCO on harmonia.scf.fasta file
@@ -100,3 +101,7 @@
 *eukaryota*
 
 2. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonoia.wgs.eukaryota -in harmonia.scf.fasta -l eukaryota/
+
+			C:10%[D:1.1%],F:6.5%,M:82%,n:429
+*arthropoda*
+1. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonia.wgs.arthropoda-in harmonia.scf.fasta -l arthropoda/			
