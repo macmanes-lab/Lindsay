@@ -50,3 +50,53 @@ September 2, 2015
 - bg - background 
 - logging into wildcat unix shell 
 - exit - leave a shell
+
+September 4, 2015
+#Getting help
+
+- man command
+- info command
+- command --help
+- whatis command
+- apropos term --> I am clueless, show me anything you have 
+
+#Linux/unix command structure
+
+- command [option] [argument]
+	- options are modifies of command
+	- arguments are input upon which the command is supposed to act 
+	
+#wget important flags 
+- -i  (download all URL's that are found in this file)
+- -t 
+- -nc
+- -N
+- -c 
+- -T
+
+#Editing commands	
+- Alt (control + option on macs) + b = jump backward to the next word
+- Alt (control + option on macs) + f = jump forward to the next word
+- Ctrl + a = return to the start of the command you are typing
+- Ctrl + e = go to the end of the fommand you are typing
+- Erase characters
+	- backspace of ctrl-backspace
+- Delete entire word
+	-  Ctrl - w
+- delete and entire line
+	- Ctrl - u 
+
+#whereis/which	
+- whereis list more than 1 path for the command 
+- which displays the one computer uses/calls first when the command is called to action
+- file (shows the type of files)
+
+#creating/ adding lines to a file 
+- touch filename
+- echo "what ever text you want to write" > file
+- echo "I want to add lines to this file, not override it" >> file
+
+#cat vs more also wc
+- cat displays everything at once 
+- more allows you to paruse through your file one screen at a time
+- wc filename gives you *lines* *words/tokens* *bites*
