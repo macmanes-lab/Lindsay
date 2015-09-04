@@ -82,4 +82,11 @@ Using this b/c of sugggestions made in optimizzing error correction of RNAseq re
 
 *80129*
 
-1. seecer 80129_AGTCAA_BC6PR5ANXX_L008_001.R1.fastq 80129_AGTCAA_BC6PR5ANXX_L008_001.R2.fastq  		
+1. seecer 80129_AGTCAA_BC6PR5ANXX_L008_001.R1.fastq 80129_AGTCAA_BC6PR5ANXX_L008_001.R2.fastq  	
+
+##BWA
+*30129*
+1. bwa index -p bwa_index corrected_reads.fa
+2. bwa mem bwa_index corrected_reads.fa
+
+	
