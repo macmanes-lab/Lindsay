@@ -104,4 +104,15 @@
 
 			C:10%[D:1.1%],F:6.5%,M:82%,n:429
 *arthropoda*
-1. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonia.wgs.arthropoda-in harmonia.scf.fasta -l arthropoda/			
+1. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonia.wgs.arthropoda -in harmonia.scf.fasta -l arthropoda/
+
+				Summarized benchmarks in BUSCO notation:
+        C:10%[D:2.9%],F:10%,M:78%,n:2675
+
+		Representing:
+        283     Complete Single-Copy BUSCOs
+        79      Complete Duplicated BUSCOs
+        288     Fragmented BUSCOs
+        2104    Missing BUSCOs
+        2675    Total BUSCO groups searched		
+**These wgs files are only 328 MB, which is concerning becuase my genome proposed at ~800 MB 	
