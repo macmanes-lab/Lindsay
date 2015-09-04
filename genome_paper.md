@@ -95,7 +95,7 @@
 2. N50ScaffoldBases=4175
 
 
-##BUSCO on harmonia.scf.fasta file
+##BUSCO on harmonia.scf.fasta file (first wgs run)
 **WD:/mnt/data3/lah/busco**
 
 *eukaryota*
@@ -103,6 +103,7 @@
 2. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonoia.wgs.eukaryota -in harmonia.scf.fasta -l eukaryota/
 
 			C:10%[D:1.1%],F:6.5%,M:82%,n:429
+3. mv run_harmonoia.wgs.eukaryota/ first_run_harmonia_wgs_eukaryota/	
 *arthropoda*
 1. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonia.wgs.arthropoda -in harmonia.scf.fasta -l arthropoda/
 
@@ -115,4 +116,13 @@
         288     Fragmented BUSCOs
         2104    Missing BUSCOs
         2675    Total BUSCO groups searched		
-**These wgs files are only 328 MB, which is concerning becuase my genome proposed at ~800 MB 	
+2.  mv run_harmonia.wgs.arthropoda/ first_run_harmonia_wgs_arthropoda/
+
+   
+      
+**These wgs files are only 328 MB, which is concerning becuase my genome proposed at ~800 MB 
+
+**I think I don't have enough data 
+
+##BUSCO on harmonia.scf.fasta file (second wgs run)	
+1. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o second_harmonia_wgs_eukaryota -in harmonia.scf.fasta -l eukaryota/
