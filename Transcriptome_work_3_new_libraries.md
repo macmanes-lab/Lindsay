@@ -86,7 +86,14 @@ Using this b/c of sugggestions made in optimizzing error correction of RNAseq re
 
 ##BWA
 *30129*
+
 1. bwa index -p bwa_index corrected_reads.fa
-2.bwa mem bwa_index corrected_reads.fa | samtools view -Sb - > test.bam
+2. bwa mem bwa_index corrected_reads.fa | samtools view -Sb - > test.bam
+3. mv test.bam 30129.bam
+
+*40129*
+
+1. bwa index -p bwa_index corrected_reads.fa
+2. bwa mem bwa_index corrected_reads.fa | samtools view -Sb - > 40129.bam
 
 	
