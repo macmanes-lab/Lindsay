@@ -26,7 +26,7 @@
 			80129 - yellow 21 spots 
 		
 			
-##Bless --killed this bc seqer is better, but got number of reads and read length
+##Bless --killed this bc SEECER is better, but got number of reads and read length
 
 
 *30129*			
@@ -96,4 +96,10 @@ Using this b/c of sugggestions made in optimizzing error correction of RNAseq re
 1. bwa index -p bwa_index corrected_reads.fa
 2. bwa mem bwa_index corrected_reads.fa | samtools view -Sb - > 40129.bam
 
+	
+	
+#rcorrector
+**WD: /mnt/data3/lah/adult_transcriptomes/rcorrector**
+
+perl /share/Rcorrector/run_rcorrector.pl -1 ../30129_TAGCTT_BC6PR5ANXX_L008_001.R1.fastq -2 ../30129_TAGCTT_BC6PR5ANXX_L008_001.R2.fastq -t 10
 	
