@@ -101,5 +101,18 @@ Using this b/c of sugggestions made in optimizzing error correction of RNAseq re
 #rcorrector
 **WD: /mnt/data3/lah/adult_transcriptomes/rcorrector**
 
+*30129*
+
 perl /share/Rcorrector/run_rcorrector.pl -1 ../30129_TAGCTT_BC6PR5ANXX_L008_001.R1.fastq -2 ../30129_TAGCTT_BC6PR5ANXX_L008_001.R2.fastq -t 10
+
+	Processed 38710598 reads
+        Corrected 11568621 bases.
+        
+*40129*
+perl /share/Rcorrector/run_rcorrector.pl -1 ../ 40129_GGCTAC_BC6PR5ANXX_L008_001.R1.fastq -2 ../ 0129_GGCTAC_BC6PR5ANXX_L008_001.R2.fastq -t 10
 	
+	Processed 31894166 reads
+        Corrected 9562341 bases.
+        
+*70129*  
+perl /share/Rcorrector/run_rcorrector.pl -1 ../70129_CTTGTA_BC6PR5ANXX_L008_001.R1.fastq ../70129_CTTGTA_BC6PR5ANXX_L008_001.R2.fastq -t 10    
