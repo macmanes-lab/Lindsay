@@ -115,4 +115,19 @@ perl /share/Rcorrector/run_rcorrector.pl -1 ../ 40129_GGCTAC_BC6PR5ANXX_L008_001
         Corrected 9562341 bases.
         
 *70129*  
-perl /share/Rcorrector/run_rcorrector.pl -1 ../70129_CTTGTA_BC6PR5ANXX_L008_001.R1.fastq ../70129_CTTGTA_BC6PR5ANXX_L008_001.R2.fastq -t 10    
+perl /share/Rcorrector/run_rcorrector.pl -1 ../70129_CTTGTA_BC6PR5ANXX_L008_001.R1.fastq ../70129_CTTGTA_BC6PR5ANXX_L008_001.R2.fastq -t 10  
+
+*80129*
+perl /share/Rcorrector/run_rcorrector.pl -1 ../80129_AGTCAA_BC6PR5ANXX_L008_001.R1.fastq -2 ../80129_AGTCAA_BC6PR5ANXX_L008_001.R2.fastq -t 10  
+	
+	Processed 106141522 reads
+        	Corrected 31009879 bases.
+        	
+blat 
+-scaffolds 
+
+
+l_rna_scaffolder
+ - transcriptome to genome
+ 
+ -maps reads back to         	
