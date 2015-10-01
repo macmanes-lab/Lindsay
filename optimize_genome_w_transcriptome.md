@@ -42,3 +42,19 @@ What I've tried:
 		blat -noHead k121-scaffolds.fa good.unique_headers_adult.larva.centroid.trinity.fasta output.psl
 		
 		blat -noHead k121-scaffolds.fa good.unique_headers_adult.larva.centroid.trinity.fasta harmonia.psl	
+		
+###transcriptome file was empty
+
+		figured this out bc used abyss-fac on it
+		
+####transcriptome 
+**OWD: /mnt/data3/lah/transcriptome_work/vsearch**
+
+#Blat
+blat -noHead k121-scaffolds.fa adult.larva.centroid.trinity.fasta harmonia.psl
+
+		Loaded 831343170 letters in 515159 sequences
+		Searched 105315076 bases in 130500 sequences
+
+#L_RNA_scaffolder.sh
+L_RNA_scaffolder.sh -d /share/L_RNA_scaffolder -j k121-scaffolds.fa -i harmonia.psl -o harmonia_scaff
