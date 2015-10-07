@@ -57,4 +57,34 @@ blat -noHead k121-scaffolds.fa adult.larva.centroid.trinity.fasta harmonia.psl
 		Searched 105315076 bases in 130500 sequences
 
 #L_RNA_scaffolder.sh
-L_RNA_scaffolder.sh -d /share/L_RNA_scaffolder -j k121-scaffolds.fa -i harmonia.psl -o harmonia_scaff
+L_RNA_scaffolder.sh -d /share/L_RNA_scaffolder -i harmonia.psl -j k121-scaffolds.fa
+
+	abyss-fac L_RNA_scaffolder.fasta 
+	N50= 4163
+
+	abyss-fac k121-scaffolds.fa
+	N50= 4109
+	
+	abyss-fac -e 830000000 L_RNA_scaffolder.fasta
+	NG50 = 3908
+#bwa
+1. bwa index -p harmonia ../L_RNA_scaffolder.fasta
+
+		seqtk mergepe \
+		/mnt/data3/lah/adult_transcriptomes/rcorrector/30129/30129_TAGCTT_BC6PR5ANXX_L008_001.R1.cor.fq \
+		/mnt/data3/lah/adult_transcriptomes/rcorrector/30129/30129_TAGCTT_BC6PR5ANXX_L008_001.R1.cor.fq \
+		| skewer -Q 2 -t 10 -x /share/trinityrnaseq/trinity-plugins/Trimmomatic/adapters/TruSeq3-PE-2.fa - -1 \
+		| extract-paired-reads.py -p - -s /dev/null - \
+		| bwa mem -p -t 10 harmonia - \
+		| samtools view -T . -bu - \
+		| samtools sort -l 0 -O bam -T tmp -@ 15 -m 22G -o 30129.harmonia.bam -
+		
+#merge 
+samtools merge all.bam *.bam	
+samtools index all.bam
+
+#BESST_RNA
+1. python /share/BESST_RNA/src/Main.py 1 -c ../L_RNA_scaffolder.fasta -f all.bam -e 3 -T 50000 -k 500 -d 1 -z 1000 -o scaffold_2_harmonia/
+
+		abyss-fac -e 830000000 Scaffolds-pass1.fa
+		NG50 4040

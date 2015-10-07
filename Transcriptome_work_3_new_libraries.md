@@ -116,7 +116,9 @@ perl /share/Rcorrector/run_rcorrector.pl -1 ../ 40129_GGCTAC_BC6PR5ANXX_L008_001
         
 *70129*  
 perl /share/Rcorrector/run_rcorrector.pl -1 ../70129_CTTGTA_BC6PR5ANXX_L008_001.R1.fastq ../70129_CTTGTA_BC6PR5ANXX_L008_001.R2.fastq -t 10  
-
+		
+	Processed 100133196 reads
+        Corrected 28495607 bases.
 *80129*
 perl /share/Rcorrector/run_rcorrector.pl -1 ../80129_AGTCAA_BC6PR5ANXX_L008_001.R1.fastq -2 ../80129_AGTCAA_BC6PR5ANXX_L008_001.R2.fastq -t 10  
 	
