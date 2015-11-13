@@ -28,7 +28,7 @@ Have to break corrected.fastq files into 20 so mpi is working to the best of it'
 
 Run cd-hit on the trimmed, bless, khmer normalized transcriptomes
 
-7. cd-hit-est -M 5000 -T 23 -c .97 -i adult.larva.fasta -o adult.larva.cdhit.fasta
+**7. cd-hit-est -M 5000 -T 23 -c .97 -i adult.larva.fasta -o adult.larva.cdhit.fasta**
 
 Running ABySS
 
@@ -411,12 +411,12 @@ WD: /mnt/data3/lah/abyss/nontrimmed.bless.no.norm.no.txn
         	
     abyss-fac -e 665000000 k101-scaffolds.fa
     		
-    		5368
+    		4643
     		
-    abyss-fac -e 665000000 k111-scaffolds.fa
+    abyss-fac -e 800000000 k111-scaffolds.fa
     
-    		5426
+    		4700
     		
-    abyss-fac -e 665000000 k121-scaffolds.fa
+    abyss-fac -e 800000000 k121-scaffolds.fa
     
-    		4680					
+    		4000					

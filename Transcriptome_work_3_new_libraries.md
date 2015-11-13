@@ -64,7 +64,7 @@
 ##SEECER (can only run 1 at a time)
 **WD: /mnt/data3/lah/adult_transcriptomes/seecer**
 	
-Using this b/c of sugggestions made in optimizzing error correction of RNAseq reads 
+Using this b/c of sugggestions made in optimizing error correction of RNAseq reads 
 
 * Use default kmer length of 17
 

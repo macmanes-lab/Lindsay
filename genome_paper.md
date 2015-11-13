@@ -126,3 +126,21 @@
 
 ##BUSCO on harmonia.scf.fasta file (second wgs run)	
 1. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o second_harmonia_wgs_eukaryota -in harmonia.scf.fasta -l eukaryota/
+		
+		Summarized benchmarks in BUSCO notation:
+			C:10%[D:0.9%],F:5.8%,M:83%,n:429
+
+		Representing:
+			44	Complete Single-Copy BUSCOs
+			4	Complete Duplicated BUSCOs
+			25	Fragmented BUSCOs
+			360	Missing BUSCOs
+			429	Total BUSCO groups searched
+2.  python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o second_harmonia_wgs_eukaryota -in harmonia.scf.fasta -l eukaryota/
+
+
+3. abyss-fac -e 800000000 harmonia.scf.fasta 
+		
+		N50 - 4175
+		NG50 - 1051
+	
