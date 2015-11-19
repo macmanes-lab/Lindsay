@@ -36,13 +36,16 @@
 
 
 ##BUSCO on both Transrate and Vsearched merged assemblies to assure that vsearch is best
-####Vsearch####
+
+*vsearch*
+
 1. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonoia.transcriptome.vsearch.eukaryota.busco -in good.unique_headers_adult.larva.centroid.trinity.fasta -l eukaryota/
 
 2. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonoia.transcriptome.vsearch.arthropoda.busco -in good.unique_headers_adult.larva.centroid.trinity.fasta -l arthropoda/
 
 
-####Transrate####
+*transrate*
+
 1. python3 /share/B
 2. USCO_v1.1b1/BUSCO_v1.1b1.py -o harmonia.transcriptome.transrate.eukaryota.busco -in good.merge.fasta -l eukaryota/
 
@@ -88,7 +91,7 @@
 ## Bless
 1. bless -read1 ../harm1.fq -read2 ../harm2.fq -prefix no.trimmed -kmerlength 25 -notrim -verify
 
-#Interleave/Splitting bless files - need to get file names
+##Interleave/Splitting bless files - need to get file names
 
 
 1. interleave-reads.py -o nontrimmed.bless.genome.interleaved.fq no.trimmed.genome
@@ -102,7 +105,7 @@
     	 		in='../x*.fastq';
     	 		done
  
-#Analyze ABySS files
+##Analyze ABySS files
 1. abyss-fac k111-8.fa
 2. python3 BUSCO_v1.1b1.py -o abyss_eukaryota -in k111-8.fa	-l eukaryota
 3. python3 BUSCO_v1.1b1.py -o abyss_arthropoda -in k111-8.fa	-l arthropoda
