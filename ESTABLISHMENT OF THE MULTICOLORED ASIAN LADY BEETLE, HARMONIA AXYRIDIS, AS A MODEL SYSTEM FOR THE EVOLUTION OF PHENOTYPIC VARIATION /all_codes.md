@@ -235,33 +235,15 @@ python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o iter1.arthropoda -f -in Scaffolds
 
 ##Converting files from fast5 to fastq 
 
-**WD: /mnt/data3/lah/nanopore**
-
 *fail*
 
-1. poretools fastq  --min-length 1000 fail/ > nanopore2.harmonia.fail.fastq
-2. abyss-fac nanopore2.harmonia.fail.fastq
-		
-		n=5943	n50=8034
-		
-3. poretools fastq --min-length 500 fail/ > nanopore2.harmonia.fail.2.fast
-4. abyss-fac nanopore2.harmonia.fail.2.fastq 
+3. poretools fastq --min-length 500 fail/ > nanopore2.harmonia.fail.fastq
 
-		n=8956 n50=7309
-		
-*abyss-fac of old data*
-
-1. abyss-fac nanopore.harmonia.fastq	
-
-		n=19802 N50=11205
-		
-
+	
 *pass*
 
 1. poretools fastq --min-length 1000 pass/ > nanopore2.harmonia.pass.fastq
-2. abyss-fac nanopore2.harmonia.pass.fastq 
 
-		n=1472 N50=6210
 	
 ##concatenating fail/pass and old nanopore data 
 1. cat nanopore2.harmonia.fail.fastq nanopore2.harmonia.pass.fastq nanopore.harmonia.fastq > nanopore.all.fastq
