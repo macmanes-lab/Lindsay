@@ -98,7 +98,7 @@
 
 	for k in 91 101 111 121; do
      			mkdir k$k;
-     			abyss-pe -C k$k np=18 k=$k name=k$k n=5 long=adult.larva.cdhit.fasta\
+     			abyss-pe -C k$k np=18 k=$k name=k$k n=5 
     	 		in='../x*.fastq';
     	 		done
  
@@ -151,6 +151,7 @@
 ##Nanocorrect on both nanopore run outputs
 
 *1st run*
+
 *convert .fastq to .fasta*
 
 1. more nanopore.harmonia.fastq | awk '{if(NR%4==1) {printf(">%s\n",substr($0,2));} else if(NR%4==2) print;}' > nanopore.harmonia.fasta 
@@ -170,7 +171,7 @@
 5. make -f nanocorrect-overlap.make INPUT=../nanopore2.harmonia.fa NAME=corrected2
 6. python nanocorrect.py corrected2 all > nanocorrect2.fasta
 
-#fasta to fastq
+##fasta to fastq
   
 
 1. python /share/ectools/fastaToFastq.py nanocorrect.fasta > nanocorrect.fastq
