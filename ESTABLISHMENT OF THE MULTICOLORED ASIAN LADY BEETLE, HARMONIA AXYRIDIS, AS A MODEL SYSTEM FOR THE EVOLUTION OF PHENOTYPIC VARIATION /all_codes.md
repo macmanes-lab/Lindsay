@@ -107,20 +107,90 @@
 2. python3 BUSCO_v1.1b1.py -o abyss_eukaryota -in k111-8.fa	-l eukaryota
 3. python3 BUSCO_v1.1b1.py -o abyss_arthropoda -in k111-8.fa	-l arthropoda
     	 		
-##MaSuRCA - add config.file.txt  
-1. ln -s /mnt/data3/lah/nanopore/nanocorrect/nanocorrect.fasta
-2. ln -s /mnt/data3/lah/nanopore/nanocorrect2/nanocorrect2.fasta
-3.python /share/ectools/fastaToFastq.py nanocorrect.fasta > nanocorrect.fastq
+
+
+#Nanopore 
+## stats 
+1. poretools stats fail/ 
+2. poretools stats pass/
+
+##Converting files from fast5 to fastq 
+
+*fail*
+
+3. poretools fastq --min-length 500 fail/ > nanopore2.harmonia.fail.fastq
+
+	
+*pass*
+
+1. poretools fastq --min-length 1000 pass/ > nanopore2.harmonia.pass.fastq
+
+	
+##concatenating fail/pass and old nanopore data 
+1. cat nanopore2.harmonia.fail.fastq nanopore2.harmonia.pass.fastq nanopore.harmonia.fastq > nanopore.all.fastq
+
+
+##nanocorrect to correct all.fastq file
+
+*convert .fastq to .fa*
+
+4. more nanopore.all.fastq | awk '{if(NR%4==1) {printf(">%s\n",substr($0,2));} else if(NR%4==2) print;}' > nanopore.all.fa		
+
+*run it*
+
+5. make -f nanocorrect-overlap.make INPUT=../nanopore.all.fa NAME=corrected
+6. python nanocorrect.py corrected all > corrected.fasta
+
+##SPades 1st
+
+
+1. spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected.fasta -t 8 -m 500 -o harmonia.nanopore2.spades --careful --only-assembler
+
+#Assembly using both nanopore and Illuminia DNA data 
+
+##Nanocorrect on both nanopore run outputs
+
+*1st run*
+*convert .fastq to .fasta*
+
+1. more nanopore.harmonia.fastq | awk '{if(NR%4==1) {printf(">%s\n",substr($0,2));} else if(NR%4==2) print;}' > nanopore.harmonia.fasta 
+
+1. make -f nanocorrect-overlap.make INPUT=nanopore.harmonia.fasta NAME=corrected 
+2. python nanocorrect.py corrected all > nanocorrect.fasta
+
+
+*2nd run*
+
+*convert .fastq to .fa*
+
+4. more nanopore2.harmonia.fastq | awk '{if(NR%4==1) {printf(">%s\n",substr($0,2));} else if(NR%4==2) print;}' > nanopore2.harmonia.fa		
+
+*run it*
+
+5. make -f nanocorrect-overlap.make INPUT=../nanopore2.harmonia.fa NAME=corrected2
+6. python nanocorrect.py corrected2 all > nanocorrect2.fasta
+
+#fasta to fastq
+  
+
+1. python /share/ectools/fastaToFastq.py nanocorrect.fasta > nanocorrect.fastq
+2. python /share/ectools/fastaToFastq.py nanocorrect2.fasta > nanocorrect2.fastq
+
+##fastaToCA
+
+5. fastqToCA -libraryname nanocorrect -technology pacbio-corrected -reads nanocorrect.fastq > nanocorrect.frg
+6. fastqToCA -libraryname nanocorrect -technology pacbio-corrected -reads nanocorrect2.fastq > nanocorrect2.frg	
+7. fastqToCA -libraryname superreads -technology sanger -reads superReadSequences.fastq > superReadSequences.frg
 		
-4. python /share/ectools/fastaToFastq.py nanocorrect2.fasta > nanocorrect2.fastq
-5. fastqToCA -libraryname nanocorrect -technology pacbio-corrected -reads nanocorrect.fastq > nanocorrect_real.frg
-6. ffastqToCA -libraryname nanocorrect -technology pacbio-corrected -reads nanocorrect2.fastq > nanocorrect2_real.frg	
+
+
+##MaSuRCA - add config.file.txt
 7. /share/MaSuRCA-3.1.0beta/bin/masurca congfig.file.txt
 8. ./assemble.sh
 9. python /share/ectools/fastaToFastq.py superReadSequences.fasta > superReadSequences.fastq
-10. fastqToCA -libraryname superreads -technology sanger -reads superReadSequences.fastq > superReadSequences_real.frg
+
 			 
-##WGS - include spec file
+##WGS 
 1. runCA -d wgs_first -p harmonia -s spec_file_2
 
 		merSize=22
@@ -151,6 +221,7 @@
 1. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o second_harmonia_wgs_eukaryota -in harmonia.scf.fasta -l eukaryota/
 2.  python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o second_harmonia_wgs_arthropoda -in harmonia.scf.fasta -l arthropoda/
 3.  abyss-fac -e 800000000 harmonia.scf.fasta	
+
 
 #Genome improvement w/ RNA reads
 ##Error correcting RNA reads
@@ -226,88 +297,6 @@ perl /share/Rcorrector/run_rcorrector.pl -1 ../80129_AGTCAA_BC6PR5ANXX_L008_001.
 2. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o iter1.eukaryota -f -in Scaffolds-pass1.fa -l /mnt/data3/lah/b
 usco/eukaryota/
 python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o iter1.arthropoda -f -in Scaffolds-pass1.fa -l /mnt/data3/lah/busco/arthropoda/
-
-
-#Nanopore 
-## stats 
-1. poretools stats fail/ 
-2. poretools stats pass/
-
-##Converting files from fast5 to fastq 
-
-*fail*
-
-3. poretools fastq --min-length 500 fail/ > nanopore2.harmonia.fail.fastq
-
-	
-*pass*
-
-1. poretools fastq --min-length 1000 pass/ > nanopore2.harmonia.pass.fastq
-
-	
-##concatenating fail/pass and old nanopore data 
-1. cat nanopore2.harmonia.fail.fastq nanopore2.harmonia.pass.fastq nanopore.harmonia.fastq > nanopore.all.fastq
-
-
-##nanocorrect to correct all.fastq file
-**WD:/mnt/data3/lah/nanopore/nanocorrect2**
-
-1. mkdir nanocorrect
-2. tmux new -s nanocorrect
-
-*convert .fastq to .fa*
-
-4. more nanopore.all.fastq | awk '{if(NR%4==1) {printf(">%s\n",substr($0,2));} else if(NR%4==2) print;}' > nanopore.all.fa		
-
-*run it*
-
-5. make -f nanocorrect-overlap.make INPUT=../nanopore.all.fa NAME=corrected
-6. python nanocorrect.py corrected all > corrected.fasta
-
-##SPades 1st
-
-**WD: /mnt/data3/lah/nanopore/nanocorrect2**
-
-1. spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected.fasta -t 8 -m 500 -o harmonia.nanopore2.spades --careful --only-assembler
-
-#####restart
-2. spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected.fasta -t 8 -m 500 -o harmonia.nanopore2.spades --careful --only-assembler --continue
-3. mv scaffolds.fasta 21.33.55.77.scaffolds.fasta
-4. abyss-fac -e 665000000 21.33.55.77.scaffolds.fasta
-
-		1634
-**Still super low...could it be because there isn't much coverage? 
-
-
-
-##Run nanocorrect on old nanopore data (so I can combine them?)
-**WD: /mnt/data3/lah/nanopore/nanocorrect**
-
-*convert .fastq to .fasta
-
-1. more nanopore.harmonia.fastq | awk '{if(NR%4==1) {printf(">%s\n",substr($0,2));} else if(NR%4==2) print;}' > nanopore.harmonia.fasta 
-
-1. make -f nanocorrect-overlap.make INPUT=nanopore.harmonia.fasta NAME=corrected 
-2. python nanocorrect.py corrected all > corrected.fasta
-
-##Spades
-1. spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected.fasta -t 8 -m 500 -o harmonia.nanopore2.spades --careful --only-assembler
-
-
-#fastqToCA
-1. fastqToCA -libraryname new.nanopore -technology pacbio-raw-type sanger -reads nanopore.all.fastq > nanopore_new.frg
-
-		But these aren't corrected.
-
-#fastaToCA
-**WD:/mnt/data3/lah/nanopore/wgs_new**
-1. fastaToCA -l new_nanopore_corrected -s corrected.fasta -q corrected.fasta > new_nanopore_corrected.frg				
-
-##wgs--will have both nanopore data and illuminia super-reads 
-
-/share/wgs-assembler/Linux-amd64/bin/runCA
-
-1. /share/wgs-assembler/Linux-amd64/bin/runCA -d temp_dir -p harmonia.nanopore.2 -s
 
 
 	

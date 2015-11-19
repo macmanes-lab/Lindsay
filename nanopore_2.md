@@ -114,6 +114,7 @@
 1. spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected.fasta -t 8 -m 500 -o harmonia.nanopore2.spades --careful --only-assembler
 
 
+
 #fastqToCA
 1. fastqToCA -libraryname new.nanopore -technology pacbio-raw-type sanger -reads nanopore.all.fastq > nanopore_new.frg
 
