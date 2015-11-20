@@ -13,7 +13,32 @@
 ##Trinity larva
 1. Trinity --seqType fq --JM 50G --trimmomatic --left ../no.trimmed.larva.1.corrected.fastq --right no.trimmed.larva.2.corrected.fastq --CPU 12 --output larva.notrim.bless.nonorm.trinity --quality_trimming_params "ILLUMINACLIP:/opt/trinity/trinity-plugins/Trimmomatic-0.30/adapters/TruSeq3-PE.fa:2:40:15 LEADING:2 TRAILING:2 MINLEN:25"
 
+##Predicting orfs with TransDecoder
 
+*adult*
+
+1. /share/TransDecoder/TransDecoder.LongOrfs -t adult.notrim.bless.nonorm.trinity.fasta
+
+		81986 = total transcripts
+2. grep ">" longest_orfs.cds | wc -l
+
+		38249		
+
+2. /share/TransDecoder/TransDecoder.Predict -t adult.notrim.bless.nonorm.trinity.fasta		
+
+*larva*
+
+3. /share/TransDecoder/TransDecoder.LongOrfs -t larva.notrim.bless.nonorm.trinity.fasta
+
+		68876 = total transcripts
+		
+4. grep ">" longest_orfs.cds | wc -l
+
+		33424		
+
+
+4. /share/TransDecoder/TransDecoder.Predict -t larva.notrim.bless.nonorm.trinity.fasta
+ 
 ##Combine adult and larva left and adult and larva right bless outputs for transrate merge 
  
 1. cat no.trimmed.adult.1.corrected.fastq no.trimmed.larva.1.corrected.fastq > adult.larva.1.corrected.fastq
@@ -147,7 +172,7 @@
 ##SPades 1st
 
 
-1. spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected.fasta -t 8 -m 500 -o harmonia.nanopore2.spades --careful --only-assembler
+1. spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected.fasta -t 8 -m 500 -o scaffolds.fa --careful --only-assembler
 
 #Assembly using both nanopore and Illuminia DNA data 
 
