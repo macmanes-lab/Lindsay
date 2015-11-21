@@ -169,10 +169,15 @@
 5. make -f nanocorrect-overlap.make INPUT=../nanopore.all.fa NAME=corrected
 6. python nanocorrect.py corrected all > corrected.fasta
 
-##SPades 1st
+##SPAdes 1st
 
 
 1. spades.py -1 harm1.fq -2 harm2.fq --nanopore corrected.fasta -t 8 -m 500 -o scaffolds.fa --careful --only-assembler
+
+##analyze SPAdes results
+1. abyss-fac -e 800000000 scaffolds.fasta 
+1. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o scaffolds.arthropoda -in scaffolds.fasta -l arthropoda/
+2. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o scaffolds.eukaryota -f -in scaffolds.fasta -l /mnt/data3/lah/busco/eukaryota
 
 #Assembly using both nanopore and Illuminia DNA data 
 
@@ -192,10 +197,8 @@
 
 *convert .fastq to .fa*
 
-4. more nanopore2.harmonia.fastq | awk '{if(NR%4==1) {printf(">%s\n",substr($0,2));} else if(NR%4==2) print;}' > nanopore2.harmonia.fa		
-
-*run it*
-
+4. more nanopore2.harmonia.fastq | awk '{if(NR%4==1) {printf(">%s\n",substr($0,2));} else if(NR%4==2) print;}' > nanopore2.harmonia.fa		,*run it*
+/.÷
 5. make -f nanocorrect-overlap.make INPUT=../nanopore2.harmonia.fa NAME=corrected2
 6. python nanocorrect.py corrected2 all > nanocorrect2.fasta
 
