@@ -70,11 +70,21 @@
 
 2. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonia.transcriptome.transrate.arthropoda.busco -in good.merge.fasta -l arthropoda/
 
-##Pfam on vsearch data
+##Pfam on vsearch transcriptome
 1. /share/TransDecoder/TransDecoder.LongOrfs -t good.unique_headers_adult.larva.centroid.trinity.fasta 
 1. blastp -query longest_orfs.pep -db uniprot  -max_target_seqs 1 -outfmt 6 -evalue 1e-5 -num_threads 10 > blastp.outfmt6
 1. hmmscan --cpu 8 --domtblout pfam.domtblout Pfam-A.hmm longest_orfs.pep
 2. /share/TransDecoder/TransDecoder.Predict -t good.unique_headers_adult.larva.centroid.trinity.fasta --retain_pfam_hits pfam.domtblout --retain_blastp_hits blastp.outfmt6
+3. grep ">" good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder.mRNA | wc -l
+
+		39582
+
+3. grep "complete" good.unique_headers_adult.larva.centroid.trinity.fasta.transdecoder.mRNA | wc -l
+
+		23241
+4. wc -l  blastp.outfmt6 
+		
+		18766 blastp.outfmt6
 
 ##Kallisto
 1. kallisto index -i adult.larva.idx good.unique_headers_adult.larva.centroid.trinity.fasta
