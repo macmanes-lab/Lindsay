@@ -24,7 +24,8 @@
 
 		38249		
 
-2. /share/TransDecoder/TransDecoder.Predict -t adult.notrim.bless.nonorm.trinity.fasta		
+2. /share/TransDecoder/TransDecoder.Predict -t adult.notrim.bless.nonorm.trinity.fasta	
+3. blastp -query longest_orfs.pep  -db uniprot_sprot  -max_target_seqs 1 -outfmt 6 -evalue 1e-5 -num_threads 10 > blastp.outfmt6	
 
 *larva*
 
@@ -38,6 +39,7 @@
 
 
 4. /share/TransDecoder/TransDecoder.Predict -t larva.notrim.bless.nonorm.trinity.fasta
+5. blastp -query longest_orfs.pep  -db /mnt/data3/lah/transrate/adult/adult.notrim.bless.nonorm.trinity.fasta.transdecoder_dir/uniprot_sprot  -max_target_seqs 1 -outfmt 6 -evalue 1e-5 -num_threads 10 > blastp.outfmt6
  
 ##Combine adult and larva left and adult and larva right bless outputs for transrate merge 
  
@@ -76,7 +78,7 @@
 
 2. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonia.transcriptome.transrate.arthropoda.busco -in good.merge.fasta -l arthropoda/
 
-#Pfam on vsearch data
+##Pfam on vsearch data
 1. blastp -query longest_orfs.pep -db uniprot  -max_target_seqs 1 -outfmt 6 -evalue 1e-5 -num_threads 10 > blastp.outfmt6
 1. hmmscan --cpu 8 --domtblout pfam.domtblout Pfam-A.hmm longest_orfs.pep
 
