@@ -76,6 +76,9 @@
 
 2. python3 /share/BUSCO_v1.1b1/BUSCO_v1.1b1.py -o harmonia.transcriptome.transrate.arthropoda.busco -in good.merge.fasta -l arthropoda/
 
+#Pfam on vsearch data
+1. blastp -query longest_orfs.pep -db uniprot  -max_target_seqs 1 -outfmt 6 -evalue 1e-5 -num_threads 10 > blastp.outfmt6
+1. hmmscan --cpu 8 --domtblout pfam.domtblout Pfam-A.hmm longest_orfs.pep
 
 ##Kallisto
 1. kallisto index -i adult.larva.idx good.unique_headers_adult.larva.centroid.trinity.fasta
