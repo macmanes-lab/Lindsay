@@ -20,7 +20,8 @@
 1. /share/TransDecoder/TransDecoder.LongOrfs -t adult.notrim.bless.nonorm.trinity.fasta
 2. /share/TransDecoder/TransDecoder.Predict -t adult.notrim.bless.nonorm.trinity.fasta	
 3. blastp -query longest_orfs.pep  -db uniprot_sprot  -max_target_seqs 1 -outfmt 6 -evalue 1e-5 -num_threads 10 > blastp.outfmt6
-4. hmmscan --cpu 8 --domtblout pfam.domtblout Pfam-A.hmm longest_orfs.pep	
+4. hmmscan --cpu 8 --domtblout pfam.domtblout Pfam-A.hmm longest_orfs.pep
+5. /share/TransDecoder/TransDecoder.Predict -t adult.notrim.bless.nonorm.trinity.fasta --retain_pfam_hits pfam.domtblout --retain_blastp_hits blastp.outfmt6	
 
 *larva*
 
